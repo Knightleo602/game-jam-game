@@ -1,39 +1,37 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 signal player_died
+signal player_health_changed(new_health: int, old_health: int)
 
-@onready var velocityComponent: VelocityComponent = $VelocityComponent
-@onready var healthComponent: HealthComponent = $HealthComponent
+@onready var velocity_component: VelocityComponent = $VelocityComponent
+@onready var health_component: HealthComponent = $HealthComponent
+@onready var movement_component: MovementComponent = $MovementComponent
 
-
-func _physics_process(_delta: float) -> void:
-	if not healthComponent.is_dead():
-		__movement()
-		# __animate_movement()
-
-
-func __movement():
-	var input = Vector2(
+func _get_input() -> Vector2:
+	return Vector2(
 		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	).normalized()
-	velocityComponent.accelerate_towards(input)
-	velocityComponent.move(self )
 
 
-func __animate_movement():
-	if velocity.x > 0:
-		$AnimatedSprite2D.play("walk_right")
-	elif velocity.x < 0:
-		$AnimatedSprite2D.play("walk_left")
-	elif velocity.y > 0:
-		$AnimatedSprite2D.play("walk_down")
-	elif velocity.y < 0:
-		$AnimatedSprite2D.play("walk_up")
-	else:
-		$AnimatedSprite2D.stop()
+func _physics_process(_delta: float) -> void:
+	if health_component.is_dead():
+		return
+	var input = _get_input()
+	movement_component.move(self , input)
+
+
+func _process(_delta: float) -> void:
+	if health_component.is_dead():
+		return
+	movement_component.animate_movement()
 
 
 func _on_death() -> void:
 	player_died.emit()
+	print("Player has died.")
 	$AnimatedSprite2D.play("death")
+
+
+func _on_health_changed(new_health: int, old_health: int) -> void:
+	player_health_changed.emit(new_health, old_health)

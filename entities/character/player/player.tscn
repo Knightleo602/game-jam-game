@@ -3,30 +3,53 @@
 [ext_resource type="Script" uid="uid://4opj8a7ja1k4" path="res://entities/character/player/player.gd" id="1_vt0b6"]
 [ext_resource type="PackedScene" uid="uid://bjvcrr31ywf8q" path="res://entities/components/hurtbox_component.tscn" id="2_3ekpe"]
 [ext_resource type="PackedScene" uid="uid://ccpbqu2hqer7g" path="res://entities/components/velocity_component.tscn" id="2_3hqro"]
-[ext_resource type="Texture2D" uid="uid://y5ip65vmmi6u" path="res://assets/character/Sprite-0001.png" id="2_tum32"]
+[ext_resource type="Texture2D" uid="uid://yuvu327h1se5" path="res://assets/character/player/spr-player-placeholder.png" id="2_mbi5q"]
 [ext_resource type="PackedScene" uid="uid://dhathox3teks3" path="res://entities/components/health_component.tscn" id="3_rlso7"]
+[ext_resource type="PackedScene" uid="uid://mclab3abpbdk" path="res://entities/components/movement_component.tscn" id="5_mbi5q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oupo"]
+atlas = ExtResource("2_mbi5q")
+region = Rect2(0, 0, 253, 233)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2oupo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oupo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vt0b6"]
-size = Vector2(26, 32)
+size = Vector2(89, 135)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bmyq4"]
-size = Vector2(14, 22)
+size = Vector2(68, 124)
 
 [node name="Player" type="CharacterBody2D" unique_id=1183110560]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_vt0b6")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1225882282]
+sprite_frames = SubResource("SpriteFrames_2oupo")
+animation = &"idle"
+autoplay = "idle"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1944276265]
-position = Vector2(1, 0)
+position = Vector2(-71.5, 17.5)
 shape = SubResource("RectangleShape2D_vt0b6")
 
 [node name="HurtboxComponent" parent="." unique_id=553604298 node_paths=PackedStringArray("health_component") instance=ExtResource("2_3ekpe")]
+position = Vector2(-92, -35)
 collision_layer = 2
-collision_mask = 0
+collision_mask = 4
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=843075085]
-position = Vector2(0, 1)
+position = Vector2(27, 52)
 shape = SubResource("RectangleShape2D_bmyq4")
 debug_color = Color(0.98082143, 0, 0.3804118, 0.41960785)
 
@@ -34,7 +57,11 @@ debug_color = Color(0.98082143, 0, 0.3804118, 0.41960785)
 
 [node name="VelocityComponent" parent="." unique_id=416629221 instance=ExtResource("2_3hqro")]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=795989236]
-texture = ExtResource("2_tum32")
+[node name="MovementComponent" parent="." unique_id=24134777 node_paths=PackedStringArray("velocity_component", "hurtbox_component", "animated_sprite") instance=ExtResource("5_mbi5q")]
+velocity_component = NodePath("../VelocityComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+animated_sprite = NodePath("../AnimatedSprite2D")
+animate = false
 
 [connection signal="died" from="HealthComponent" to="." method="_on_death"]
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_changed"]
