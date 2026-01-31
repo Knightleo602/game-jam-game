@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cdsork0fui4y6"]
+
+[ext_resource type="Script" uid="uid://c8fxjphxm1fxc" path="res://entities/components/health_component.gd" id="1_5ynui"]
+[ext_resource type="Script" uid="uid://dk2626lfapnm1" path="res://entities/components/velocity_component.gd" id="2_hc4o0"]
+[ext_resource type="Script" uid="uid://dh2k6kskotk6y" path="res://entities/components/hurtbox_component.gd" id="3_pp0wr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajdog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrlt3"]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=961511005]
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1540721657]
+script = ExtResource("1_5ynui")
+metadata/_custom_type_script = "uid://c8fxjphxm1fxc"
+
+[node name="VelocityComponent" type="Node" parent="." unique_id=442562657]
+script = ExtResource("2_hc4o0")
+metadata/_custom_type_script = "uid://dk2626lfapnm1"
+
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=792068835 node_paths=PackedStringArray("health_component")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_pp0wr")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://dh2k6kskotk6y"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1910366673]
+shape = SubResource("CircleShape2D_ajdog")
+debug_color = Color(0.9672654, 1.732707e-06, 0.47835916, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=132540983]
+shape = SubResource("RectangleShape2D_lrlt3")

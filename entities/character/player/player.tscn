@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bciv4ehi025yo"]
 
-[ext_resource type="Script" uid="uid://4opj8a7ja1k4" path="res://entities/character/player.gd" id="1_vt0b6"]
+[ext_resource type="Script" uid="uid://4opj8a7ja1k4" path="res://entities/character/player/player.gd" id="1_vt0b6"]
 [ext_resource type="PackedScene" uid="uid://bjvcrr31ywf8q" path="res://entities/components/hurtbox_component.tscn" id="2_3ekpe"]
 [ext_resource type="PackedScene" uid="uid://ccpbqu2hqer7g" path="res://entities/components/velocity_component.tscn" id="2_3hqro"]
 [ext_resource type="Texture2D" uid="uid://y5ip65vmmi6u" path="res://assets/character/Sprite-0001.png" id="2_tum32"]
