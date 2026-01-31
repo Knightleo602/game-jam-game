@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://h4pa2c07dru1"]
+
+[ext_resource type="Script" uid="uid://bvtcumcdywngg" path="res://ui/scripts/main_menu.gd" id="1_t7e0r"]
+
+[node name="MainMenu" type="Node2D" unique_id=546047650]
+script = ExtResource("1_t7e0r")
+
+[node name="ButtonManager" type="Control" parent="." unique_id=1525833039]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StartButton" type="Button" parent="ButtonManager" unique_id=2007693105]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 165.0
+offset_right = 632.0
+offset_bottom = 219.0
+text = "Start"
+
+[node name="Options" type="Button" parent="ButtonManager" unique_id=1285411131]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 235.0
+offset_right = 632.0
+offset_bottom = 289.0
+text = "Options"
+
+[node name="Ranking" type="Button" parent="ButtonManager" unique_id=2132473284]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 304.0
+offset_right = 634.0
+offset_bottom = 358.0
+text = "Ranking"
+
+[node name="Quit" type="Button" parent="ButtonManager" unique_id=237588540]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 375.0
+offset_right = 635.0
+offset_bottom = 429.0
+text = "Quit"
+
+[node name="Label" type="Label" parent="." unique_id=1805124115]
+offset_left = 497.0
+offset_top = 67.0
+offset_right = 628.0
+offset_bottom = 90.0
+text = "GAME JAM GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="ButtonManager/StartButton" to="." method="_on_start_button_button_down"]
+[connection signal="button_down" from="ButtonManager/Options" to="." method="_on_options_button_down"]
+[connection signal="button_down" from="ButtonManager/Ranking" to="." method="_on_ranking_button_down"]
+[connection signal="button_down" from="ButtonManager/Quit" to="." method="_on_quit_button_down"]

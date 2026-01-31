@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://4ydb4hiwprvy"]
+
+[ext_resource type="Script" uid="uid://blr2q25wyyh74" path="res://ui/scripts/ranking_menu.gd" id="1_u0vpx"]
+
+[node name="RankingMenu" type="Node2D" unique_id=546047650]
+script = ExtResource("1_u0vpx")
+
+[node name="ButtonManager" type="Control" parent="." unique_id=1525833039]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Quit" type="Button" parent="ButtonManager" unique_id=237588540]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 375.0
+offset_right = 635.0
+offset_bottom = 429.0
+text = "Quit"
+
+[node name="Label" type="Label" parent="." unique_id=1028845623]
+offset_left = 526.0
+offset_top = 64.0
+offset_right = 589.0
+offset_bottom = 87.0
+text = "Ranking"
+
+[connection signal="button_down" from="ButtonManager/Quit" to="." method="_on_quit_button_down"]
