@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://c8fxjphxm1fxc" path="res://entities/components/health_component.gd" id="1_5ynui"]
 [ext_resource type="Script" uid="uid://dk2626lfapnm1" path="res://entities/components/velocity_component.gd" id="2_hc4o0"]
 [ext_resource type="Texture2D" uid="uid://bs0yf6lsrw6iw" path="res://assets/character/enemy/spr-capanga.png" id="3_ajdog"]
-[ext_resource type="Script" uid="uid://dh2k6kskotk6y" path="res://entities/components/hurtbox_component.gd" id="3_pp0wr"]
-[ext_resource type="Script" uid="uid://b1hhr2qu4i8uj" path="res://entities/components/hitbox_component.gd" id="5_pp0wr"]
+[ext_resource type="PackedScene" uid="uid://bjvcrr31ywf8q" path="res://entities/components/hurtbox_component.tscn" id="4_pp0wr"]
+[ext_resource type="PackedScene" uid="uid://1h1j3w4uclbl" path="res://entities/components/hitbox_component.tscn" id="5_ajdog"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrlt3"]
 atlas = ExtResource("3_ajdog")
@@ -39,6 +39,7 @@ collision_mask = 7
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1540721657]
 script = ExtResource("1_5ynui")
+debug_mode = true
 metadata/_custom_type_script = "uid://c8fxjphxm1fxc"
 
 [node name="VelocityComponent" type="Node" parent="." unique_id=442562657]
@@ -53,12 +54,10 @@ animation = &"idle"
 position = Vector2(5.5, 36.125)
 shape = SubResource("RectangleShape2D_pp0wr")
 
-[node name="HurtboxComponent" type="Area2D" parent="." unique_id=792068835 node_paths=PackedStringArray("health_component")]
+[node name="HurtboxComponent" parent="." unique_id=553604298 node_paths=PackedStringArray("health_component") instance=ExtResource("4_pp0wr")]
 collision_layer = 4
-collision_mask = 2
-script = ExtResource("3_pp0wr")
+collision_mask = 10
 health_component = NodePath("../HealthComponent")
-metadata/_custom_type_script = "uid://dh2k6kskotk6y"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1910366673]
 position = Vector2(6, 22)
@@ -70,12 +69,9 @@ position = Vector2(-23, -81)
 shape = SubResource("RectangleShape2D_lrlt3")
 debug_color = Color(0, 0.6511708, 0.060456805, 0.41960785)
 
-[node name="HitboxComponent" type="Area2D" parent="." unique_id=1612229511]
+[node name="HitboxComponent" parent="." unique_id=962314165 instance=ExtResource("5_ajdog")]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("5_pp0wr")
-damage = 1
-metadata/_custom_type_script = "uid://b1hhr2qu4i8uj"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent" unique_id=1443530010]
 position = Vector2(67, 11)
