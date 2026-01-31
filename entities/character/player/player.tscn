@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://yuvu327h1se5" path="res://assets/character/player/spr-player-placeholder.png" id="2_mbi5q"]
 [ext_resource type="PackedScene" uid="uid://dhathox3teks3" path="res://entities/components/health_component.tscn" id="3_rlso7"]
 [ext_resource type="PackedScene" uid="uid://mclab3abpbdk" path="res://entities/components/movement_component.tscn" id="5_mbi5q"]
+[ext_resource type="Texture2D" uid="uid://ctx2snu51fjdh" path="res://assets/hud/spr-mascara-linhas.png" id="7_jko58"]
+[ext_resource type="Texture2D" uid="uid://dl7ebjbanrxts" path="res://assets/hud/spr-mascara-preenchimento.png" id="8_42idl"]
+[ext_resource type="Script" uid="uid://bolpgv54n4dfh" path="res://ui/hud/texture_progress_bar.gd" id="9_7wker"]
+[ext_resource type="Texture2D" uid="uid://cv1mi5f07x8wu" path="res://assets/hud/spr-mascara-linhas-2.png" id="10_7wker"]
+[ext_resource type="Texture2D" uid="uid://bsbyswc5jnogs" path="res://assets/hud/spr-mascara-linhas-3.png" id="11_5hl2u"]
 [ext_resource type="PackedScene" uid="uid://slojcui6rutk" path="res://entities/components/knockback_component.tscn" id="6_2oupo"]
 [ext_resource type="Script" uid="uid://dk2626lfapnm1" path="res://entities/components/velocity_component.gd" id="7_210l5"]
 
@@ -76,5 +81,28 @@ animated_sprite = NodePath("../AnimatedSprite2D")
 knockback_component = NodePath("../KnockbackComponent")
 animate = false
 
+[node name="Hud" type="CanvasLayer" parent="." unique_id=1359018619]
+
+[node name="MaskBar" type="TextureProgressBar" parent="Hud" unique_id=1759023371]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -207.0
+offset_top = -605.0
+offset_right = 207.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.25, 0.25)
+pivot_offset_ratio = Vector2(0.5, 0.95)
+texture_over = ExtResource("7_jko58")
+texture_progress = ExtResource("8_42idl")
+script = ExtResource("9_7wker")
+texture_high = ExtResource("7_jko58")
+texture_mid = ExtResource("10_7wker")
+texture_low = ExtResource("11_5hl2u")
+
+[connection signal="player_health_changed" from="." to="Hud/MaskBar" method="_on_player_player_health_changed"]
 [connection signal="died" from="HealthComponent" to="." method="_on_death"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_changed"]

@@ -22,4 +22,4 @@ func _on_fade_timer_timeout() -> void:
 		"start":
 			get_tree().change_scene_to_file("res://stages/main_scene.tscn")
 		"ranking":
-			get_tree().change_scene_to_file("res://ui/ranking_menu.tscn")			
+			get_tree().change_scene_to_file("res://ui/ranking_menu.tscn")

@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bvtcumcdywngg" path="res://ui/scripts/main_menu.gd" id="1_t7e0r"]
 [ext_resource type="PackedScene" uid="uid://cv5df3wnyj0io" path="res://ui/fade_transicions.tscn" id="2_0dkrt"]
+[ext_resource type="Texture2D" uid="uid://bdo37alqa0aqa" path="res://assets/menu/spr-menu-mascara.png" id="2_5klac"]
 [ext_resource type="Texture2D" uid="uid://b80ix2qnjdaeu" path="res://assets/menu/spr-menu-jogar.png" id="2_wk0pr"]
+[ext_resource type="Script" uid="uid://dmw3m2eno3uq" path="res://ui/scripts/back_mask.gd" id="3_lsdqh"]
 [ext_resource type="Texture2D" uid="uid://o3rt14mraf2y" path="res://assets/menu/spr-menu-ranking.png" id="3_p8ri8"]
 [ext_resource type="Texture2D" uid="uid://onxanvrjvbdk" path="res://assets/menu/spr-menu-jogar-branco.png" id="3_ubpvv"]
 [ext_resource type="Texture2D" uid="uid://eb8x38uy0usc" path="res://assets/menu/spr-menu-ranking-branco.png" id="4_ubpvv"]
@@ -20,8 +22,8 @@ script = ExtResource("1_t7e0r")
 [node name="Menu" type="Control" parent="CanvasLayer" unique_id=877733964]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_right = 1152.0
+offset_bottom = 648.0
 
 [node name="Panel" type="Panel" parent="CanvasLayer/Menu" unique_id=2037563849]
 layout_mode = 1
@@ -32,14 +34,49 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Menu" unique_id=1799854450]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -401.0
+offset_top = 32.0
+offset_right = 500.0
+offset_bottom = 32.0
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_5klac")
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("3_lsdqh")
+speed = 4.0
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Menu" unique_id=664991465]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.99994
+offset_top = 8.0
+offset_right = 359.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_5klac")
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("3_lsdqh")
+speed = -4.0
+
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Menu" unique_id=1603829976]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -202.61523
-offset_right = 218.61523
-offset_bottom = 500.0
+offset_left = -135.80762
+offset_right = 135.80762
+offset_bottom = 225.0
 grow_horizontal = 2
 theme_override_constants/margin_top = 32
 
@@ -58,15 +95,18 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -191.5
-offset_top = -398.0
+offset_top = -530.0
 offset_right = 191.5
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.6, 0.6)
+pivot_offset_ratio = Vector2(0.5, 0.8)
 theme_override_constants/margin_bottom = 64
 
 [node name="ButtonManager" type="VBoxContainer" parent="CanvasLayer/Menu/MarginContainer2" unique_id=823429610]
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_constants/separation = 84
 
 [node name="StartButton" type="TextureButton" parent="CanvasLayer/Menu/MarginContainer2/ButtonManager" unique_id=999299210]
