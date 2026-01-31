@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://h4pa2c07dru1"]
+
+[ext_resource type="Script" uid="uid://bvtcumcdywngg" path="res://ui/scripts/main_menu.gd" id="1_t7e0r"]
+[ext_resource type="PackedScene" uid="uid://cv5df3wnyj0io" path="res://ui/fade_transicions.tscn" id="2_0dkrt"]
+[ext_resource type="Texture2D" uid="uid://b80ix2qnjdaeu" path="res://assets/menu/spr-menu-jogar.png" id="2_wk0pr"]
+[ext_resource type="Texture2D" uid="uid://o3rt14mraf2y" path="res://assets/menu/spr-menu-ranking.png" id="3_p8ri8"]
+[ext_resource type="Texture2D" uid="uid://onxanvrjvbdk" path="res://assets/menu/spr-menu-jogar-branco.png" id="3_ubpvv"]
+[ext_resource type="Texture2D" uid="uid://eb8x38uy0usc" path="res://assets/menu/spr-menu-ranking-branco.png" id="4_ubpvv"]
+[ext_resource type="Texture2D" uid="uid://uia62ajy5yfr" path="res://assets/menu/spr-menu-sair.png" id="5_arv2f"]
+[ext_resource type="Texture2D" uid="uid://cusgllgtk8wya" path="res://assets/menu/spr-menu-sair-branco.png" id="6_5klac"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0dkrt"]
+load_path = "res://.godot/imported/spr-menu-titulo.png-d53be3605753ed3fe2ce9ad360a911d4.ctex"
+
+[node name="MainMenu" type="Node2D" unique_id=546047650]
+script = ExtResource("1_t7e0r")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1044764875]
+
+[node name="Menu" type="Control" parent="CanvasLayer" unique_id=877733964]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Menu" unique_id=2037563849]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Menu" unique_id=1603829976]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -202.61523
+offset_right = 218.61523
+offset_bottom = 500.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 32
+
+[node name="Title" type="TextureRect" parent="CanvasLayer/Menu/MarginContainer" unique_id=1894481064]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+texture = SubResource("CompressedTexture2D_0dkrt")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Menu" unique_id=1612032829]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -191.5
+offset_top = -398.0
+offset_right = 191.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 64
+
+[node name="ButtonManager" type="VBoxContainer" parent="CanvasLayer/Menu/MarginContainer2" unique_id=823429610]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 84
+
+[node name="StartButton" type="TextureButton" parent="CanvasLayer/Menu/MarginContainer2/ButtonManager" unique_id=999299210]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_wk0pr")
+texture_hover = ExtResource("3_ubpvv")
+
+[node name="Ranking" type="TextureButton" parent="CanvasLayer/Menu/MarginContainer2/ButtonManager" unique_id=1364206215]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("3_p8ri8")
+texture_hover = ExtResource("4_ubpvv")
+
+[node name="Quit" type="TextureButton" parent="CanvasLayer/Menu/MarginContainer2/ButtonManager" unique_id=1329826898]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("5_arv2f")
+texture_hover = ExtResource("6_5klac")
+
+[node name="FadeTransicions" parent="." unique_id=239104663 instance=ExtResource("2_0dkrt")]
+visible = false
+
+[node name="FadeTimer" type="Timer" parent="FadeTransicions" unique_id=541123251]
+wait_time = 0.5
+
+[connection signal="button_down" from="CanvasLayer/Menu/MarginContainer2/ButtonManager/StartButton" to="." method="_on_start_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/Menu/MarginContainer2/ButtonManager/Ranking" to="." method="_on_ranking_button_down"]
+[connection signal="button_down" from="CanvasLayer/Menu/MarginContainer2/ButtonManager/Quit" to="." method="_on_quit_button_down"]
+[connection signal="timeout" from="FadeTransicions/FadeTimer" to="." method="_on_fade_timer_timeout"]

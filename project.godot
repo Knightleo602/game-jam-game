@@ -11,13 +11,25 @@ config_version=5
 [application]
 
 config/name="GameJamGame"
-run/main_scene="uid://crilrrgqbclja"
+run/main_scene="uid://h4pa2c07dru1"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/borderless=true
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/nklbdev.importality/plugin.cfg")
+enabled=PackedStringArray()
+
+[gui]
+
+theme/custom="uid://uwtqto617cot"
 
 [input]
 
@@ -56,4 +68,5 @@ move_right={
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

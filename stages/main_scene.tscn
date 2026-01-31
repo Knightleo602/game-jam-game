@@ -1,22 +1,16 @@
 [gd_scene format=4 uid="uid://crilrrgqbclja"]
 
-[ext_resource type="PackedScene" uid="uid://bciv4ehi025yo" path="res://entities/character/player.tscn" id="1_3r8lt"]
-[ext_resource type="Texture2D" uid="uid://y5ip65vmmi6u" path="res://assets/character/Sprite-0001.png" id="2_1n5d8"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uui7f"]
-texture = ExtResource("2_1n5d8")
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_7rt5u"]
-sources/0 = SubResource("TileSetAtlasSource_uui7f")
+[ext_resource type="Script" uid="uid://bflev4pkv4x8b" path="res://stages/main_scene.gd" id="1_1n5d8"]
+[ext_resource type="PackedScene" uid="uid://bciv4ehi025yo" path="res://entities/character/player.tscn" id="1_xuk4b"]
+[ext_resource type="PackedScene" uid="uid://cv5df3wnyj0io" path="res://ui/fade_transicions.tscn" id="3_uui7f"]
 
 [node name="MainScene" type="Node2D" unique_id=2138036064]
+script = ExtResource("1_1n5d8")
 
-[node name="Player" parent="." unique_id=1183110560 instance=ExtResource("1_3r8lt")]
+[node name="Player" parent="." unique_id=1183110560 instance=ExtResource("1_xuk4b")]
+position = Vector2(567, 312)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1582320420]
 zoom = Vector2(4.89, 4.89)
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1519606163]
-tile_map_data = PackedByteArray("AAACAAIAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD9//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAP7/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAD//wIAAAAAAAAAAAD+/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wIAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_7rt5u")
+[node name="FadeTransicions" parent="." unique_id=239104663 instance=ExtResource("3_uui7f")]
