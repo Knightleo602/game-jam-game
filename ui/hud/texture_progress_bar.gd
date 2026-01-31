@@ -11,9 +11,9 @@ func _ready():
 	maxHealthUI = $"../../HealthComponent".max_health
 	update_texture_style()
 
-func _on_player_player_health_changed(health: int, maxHealth: int) -> void:
-	healthUI = health
-	maxHealthUI = maxHealth
+func _on_player_player_health_changed(new_health: int, old_health: int, max_health: int) -> void:
+	healthUI = new_health
+	maxHealthUI = max_health
 	update_texture_style()
 
 func update_texture_style():
