@@ -1,29 +1,73 @@
 [gd_scene format=3 uid="uid://4ydb4hiwprvy"]
 
 [ext_resource type="Script" uid="uid://blr2q25wyyh74" path="res://ui/scripts/ranking_menu.gd" id="1_u0vpx"]
+[ext_resource type="Texture2D" uid="uid://uia62ajy5yfr" path="res://assets/menu/spr-menu-sair.png" id="2_65fpg"]
+[ext_resource type="Texture2D" uid="uid://cusgllgtk8wya" path="res://assets/menu/spr-menu-sair-branco.png" id="3_2as8l"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_41pix"]
+load_path = "res://.godot/imported/spr-menu-titulo.png-d53be3605753ed3fe2ce9ad360a911d4.ctex"
 
 [node name="RankingMenu" type="Node2D" unique_id=546047650]
 script = ExtResource("1_u0vpx")
 
-[node name="ButtonManager" type="Control" parent="." unique_id=1525833039]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1872864299]
+
+[node name="Menu" type="Control" parent="CanvasLayer" unique_id=654806709]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
-[node name="Quit" type="Button" parent="ButtonManager" unique_id=237588540]
-layout_mode = 0
-offset_left = 495.0
-offset_top = 375.0
-offset_right = 635.0
-offset_bottom = 429.0
-text = "Quit"
+[node name="Panel" type="Panel" parent="CanvasLayer/Menu" unique_id=1483573493]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="." unique_id=1028845623]
-offset_left = 526.0
-offset_top = 64.0
-offset_right = 589.0
-offset_bottom = 87.0
-text = "Ranking"
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Menu" unique_id=823749624]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -202.61523
+offset_right = 218.61523
+offset_bottom = 500.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 32
 
-[connection signal="button_down" from="ButtonManager/Quit" to="." method="_on_quit_button_down"]
+[node name="Title" type="TextureRect" parent="CanvasLayer/Menu/MarginContainer" unique_id=1375309181]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+texture = SubResource("CompressedTexture2D_41pix")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Menu" unique_id=1838320551]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -105.0
+offset_top = -161.0
+offset_right = 105.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 64
+
+[node name="ButtonManager" type="VBoxContainer" parent="CanvasLayer/Menu/MarginContainer2" unique_id=2026635891]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 84
+
+[node name="Quit" type="TextureButton" parent="CanvasLayer/Menu/MarginContainer2/ButtonManager" unique_id=1582959207]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_65fpg")
+texture_hover = ExtResource("3_2as8l")
+
+[connection signal="button_down" from="CanvasLayer/Menu/MarginContainer2/ButtonManager/Quit" to="." method="_on_quit_button_down"]
