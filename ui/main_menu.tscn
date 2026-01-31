@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bvtcumcdywngg" path="res://ui/scripts/main_menu.gd" id="1_t7e0r"]
 [ext_resource type="PackedScene" uid="uid://cv5df3wnyj0io" path="res://ui/fade_transicions.tscn" id="2_0dkrt"]
+[ext_resource type="Texture2D" uid="uid://bdo37alqa0aqa" path="res://assets/menu/spr-menu-mascara.png" id="2_5klac"]
 [ext_resource type="Texture2D" uid="uid://b80ix2qnjdaeu" path="res://assets/menu/spr-menu-jogar.png" id="2_wk0pr"]
+[ext_resource type="Script" uid="uid://dmw3m2eno3uq" path="res://ui/scripts/back_mask.gd" id="3_lsdqh"]
 [ext_resource type="Texture2D" uid="uid://o3rt14mraf2y" path="res://assets/menu/spr-menu-ranking.png" id="3_p8ri8"]
 [ext_resource type="Texture2D" uid="uid://onxanvrjvbdk" path="res://assets/menu/spr-menu-jogar-branco.png" id="3_ubpvv"]
 [ext_resource type="Texture2D" uid="uid://eb8x38uy0usc" path="res://assets/menu/spr-menu-ranking-branco.png" id="4_ubpvv"]
@@ -31,6 +33,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Menu" unique_id=1799854450]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -401.0
+offset_top = 32.0
+offset_right = 500.0
+offset_bottom = 32.0
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_5klac")
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("3_lsdqh")
+speed = 4.0
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Menu" unique_id=664991465]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -288.99994
+offset_top = 8.0
+offset_right = 359.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("2_5klac")
+expand_mode = 2
+stretch_mode = 5
+script = ExtResource("3_lsdqh")
+speed = -4.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Menu" unique_id=1603829976]
 layout_mode = 1
