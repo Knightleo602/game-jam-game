@@ -58,6 +58,7 @@ debug_color = Color(0.98082143, 0, 0.3804118, 0.41960785)
 [node name="HealthComponent" parent="." unique_id=1486431947 instance=ExtResource("3_rlso7")]
 
 [node name="VelocityComponent" parent="." unique_id=416629221 instance=ExtResource("2_3hqro")]
+max_speed = 500
 
 [node name="KnockbackComponent" parent="." unique_id=1512948786 node_paths=PackedStringArray("velocity_component") instance=ExtResource("6_2oupo")]
 velocity_component = NodePath("VelocityComponent")
