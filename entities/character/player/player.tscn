@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://yuvu327h1se5" path="res://assets/character/player/spr-player-placeholder.png" id="2_mbi5q"]
 [ext_resource type="PackedScene" uid="uid://dhathox3teks3" path="res://entities/components/health_component.tscn" id="3_rlso7"]
 [ext_resource type="PackedScene" uid="uid://mclab3abpbdk" path="res://entities/components/movement_component.tscn" id="5_mbi5q"]
+[ext_resource type="PackedScene" uid="uid://slojcui6rutk" path="res://entities/components/knockback_component.tscn" id="6_2oupo"]
+[ext_resource type="Script" uid="uid://dk2626lfapnm1" path="res://entities/components/velocity_component.gd" id="7_210l5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2oupo"]
 atlas = ExtResource("2_mbi5q")
@@ -57,10 +59,20 @@ debug_color = Color(0.98082143, 0, 0.3804118, 0.41960785)
 
 [node name="VelocityComponent" parent="." unique_id=416629221 instance=ExtResource("2_3hqro")]
 
-[node name="MovementComponent" parent="." unique_id=24134777 node_paths=PackedStringArray("velocity_component", "hurtbox_component", "animated_sprite") instance=ExtResource("5_mbi5q")]
+[node name="KnockbackComponent" parent="." unique_id=1512948786 node_paths=PackedStringArray("velocity_component") instance=ExtResource("6_2oupo")]
+velocity_component = NodePath("VelocityComponent")
+force_on_weak = 3
+
+[node name="VelocityComponent" type="Node" parent="KnockbackComponent" unique_id=1672530164]
+script = ExtResource("7_210l5")
+friction = 1
+metadata/_custom_type_script = "uid://dk2626lfapnm1"
+
+[node name="MovementComponent" parent="." unique_id=24134777 node_paths=PackedStringArray("velocity_component", "hurtbox_component", "animated_sprite", "knockback_component") instance=ExtResource("5_mbi5q")]
 velocity_component = NodePath("../VelocityComponent")
 hurtbox_component = NodePath("../HurtboxComponent")
 animated_sprite = NodePath("../AnimatedSprite2D")
+knockback_component = NodePath("../KnockbackComponent")
 animate = false
 
 [connection signal="died" from="HealthComponent" to="." method="_on_death"]

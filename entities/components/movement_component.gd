@@ -4,6 +4,7 @@ class_name MovementComponent extends Node
 @export var velocity_component: VelocityComponent
 @export var hurtbox_component: HurtboxComponent
 @export var animated_sprite: AnimatedSprite2D
+@export var knockback_component: KnockbackComponent
 
 @export_group("Animation Names")
 @export var anim_walk_up: String = "walk_up"
@@ -13,13 +14,13 @@ class_name MovementComponent extends Node
 @export var anim_stagger: String = "stagger"
 
 @export_group("Extra options")
-@export var stagger_on_hit: bool = true
 @export var animate = true
 
 
 func _ready() -> void:
 	assert(velocity_component != null, "VelocityComponent not assigned in MovementComponent")
 	assert(animated_sprite != null, "AnimatedSprite2D not assigned in MovementComponent")
+	assert(knockback_component != null, "KnockbackComponent not assigned in MovementComponent")
 	if hurtbox_component != null:
 		hurtbox_component.connect("hit_taken", _take_hit)
 
@@ -28,9 +29,16 @@ func _exit_tree() -> void:
 	if hurtbox_component != null:
 		hurtbox_component.disconnect("hit_taken", _take_hit)
 
-func move(character: CharacterBody2D, direction: Vector2):
-	velocity_component.accelerate_towards(direction)
-	velocity_component.move(character)
+
+func move(character: CharacterBody2D, direction: Vector2, delta: float = get_physics_process_delta_time()) -> void:
+	if knockback_component.is_knockback_ative():
+		knockback_component.move_knockback(character, delta)
+		velocity_component.velocity = knockback_component.get_velocity()
+	else:
+		velocity_component.accelerate_towards(direction, delta)
+		velocity_component.move(character)
+	character.move_and_slide()
+
 
 func animate_movement():
 	if not animate:
@@ -50,7 +58,6 @@ func animate_movement():
 
 
 func _take_hit(hit_box: HitboxComponent) -> void:
-	if not stagger_on_hit:
-		return
-	var direction = (hurtbox_component.global_position - hit_box.position).normalized()
-	velocity_component.stagger(direction, hit_box.hit_strength)
+	var direction = - (hit_box.global_position - hurtbox_component.global_position).normalized()
+	print("Applying knockback in direction: ", direction)
+	knockback_component.knockback(direction, hit_box.hit_strength)
