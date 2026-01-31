@@ -39,6 +39,7 @@ collision_mask = 7
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1540721657]
 script = ExtResource("1_5ynui")
+debug_mode = true
 metadata/_custom_type_script = "uid://c8fxjphxm1fxc"
 
 [node name="VelocityComponent" type="Node" parent="." unique_id=442562657]
@@ -53,31 +54,31 @@ animation = &"idle"
 position = Vector2(5.5, 36.125)
 shape = SubResource("RectangleShape2D_pp0wr")
 
-[node name="HurtboxComponent2" parent="." unique_id=553604298 node_paths=PackedStringArray("health_component") instance=ExtResource("4_pp0wr")]
+[node name="HurtboxComponent" parent="." unique_id=553604298 node_paths=PackedStringArray("health_component") instance=ExtResource("4_pp0wr")]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 10
 health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent2" unique_id=1910366673]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1910366673]
 position = Vector2(6, 22)
 shape = SubResource("RectangleShape2D_ajdog")
 debug_color = Color(1.9011646e-06, 0.65241104, 0.020100364, 0.41960785)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent2" unique_id=1006680685]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1006680685]
 position = Vector2(-23, -81)
 shape = SubResource("RectangleShape2D_lrlt3")
 debug_color = Color(0, 0.6511708, 0.060456805, 0.41960785)
 
-[node name="HitboxComponent2" parent="." unique_id=962314165 instance=ExtResource("5_ajdog")]
+[node name="HitboxComponent" parent="." unique_id=962314165 instance=ExtResource("5_ajdog")]
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent2" unique_id=1443530010]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent" unique_id=1443530010]
 position = Vector2(67, 11)
 shape = SubResource("CircleShape2D_lrlt3")
 debug_color = Color(0.81202555, 0.0021079343, 0.983723, 0.41960785)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent2" unique_id=728985156]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=728985156]
 position = Vector2(-65, -3)
 shape = SubResource("CircleShape2D_lrlt3")
 debug_color = Color(0.81202555, 0.0021079343, 0.983723, 0.41960785)

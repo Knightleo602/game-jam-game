@@ -4,15 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://bjvcrr31ywf8q" path="res://entities/components/hurtbox_component.tscn" id="2_3ekpe"]
 [ext_resource type="PackedScene" uid="uid://ccpbqu2hqer7g" path="res://entities/components/velocity_component.tscn" id="2_3hqro"]
 [ext_resource type="Texture2D" uid="uid://yuvu327h1se5" path="res://assets/character/player/spr-player-placeholder.png" id="2_mbi5q"]
+[ext_resource type="PackedScene" uid="uid://dld2h07b5m84u" path="res://entities/character/gun/gun.tscn" id="3_l8lo3"]
 [ext_resource type="PackedScene" uid="uid://dhathox3teks3" path="res://entities/components/health_component.tscn" id="3_rlso7"]
 [ext_resource type="PackedScene" uid="uid://mclab3abpbdk" path="res://entities/components/movement_component.tscn" id="5_mbi5q"]
+[ext_resource type="PackedScene" uid="uid://slojcui6rutk" path="res://entities/components/knockback_component.tscn" id="6_2oupo"]
+[ext_resource type="Script" uid="uid://dk2626lfapnm1" path="res://entities/components/velocity_component.gd" id="7_210l5"]
 [ext_resource type="Texture2D" uid="uid://ctx2snu51fjdh" path="res://assets/hud/spr-mascara-linhas.png" id="7_jko58"]
 [ext_resource type="Texture2D" uid="uid://dl7ebjbanrxts" path="res://assets/hud/spr-mascara-preenchimento.png" id="8_42idl"]
 [ext_resource type="Script" uid="uid://bolpgv54n4dfh" path="res://ui/hud/texture_progress_bar.gd" id="9_7wker"]
 [ext_resource type="Texture2D" uid="uid://cv1mi5f07x8wu" path="res://assets/hud/spr-mascara-linhas-2.png" id="10_7wker"]
 [ext_resource type="Texture2D" uid="uid://bsbyswc5jnogs" path="res://assets/hud/spr-mascara-linhas-3.png" id="11_5hl2u"]
-[ext_resource type="PackedScene" uid="uid://slojcui6rutk" path="res://entities/components/knockback_component.tscn" id="6_2oupo"]
-[ext_resource type="Script" uid="uid://dk2626lfapnm1" path="res://entities/components/velocity_component.gd" id="7_210l5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2oupo"]
 atlas = ExtResource("2_mbi5q")
@@ -48,6 +49,9 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1944276265]
 position = Vector2(-71.5, 17.5)
 shape = SubResource("RectangleShape2D_vt0b6")
+
+[node name="Gun" parent="." unique_id=1984785067 instance=ExtResource("3_l8lo3")]
+position = Vector2(-114, -72)
 
 [node name="HurtboxComponent" parent="." unique_id=553604298 node_paths=PackedStringArray("health_component") instance=ExtResource("2_3ekpe")]
 position = Vector2(-92, -35)
