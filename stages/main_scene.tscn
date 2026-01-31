@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://crilrrgqbclja"]
+[gd_scene format=3 uid="uid://crilrrgqbclja"]
 
 [ext_resource type="Script" uid="uid://bflev4pkv4x8b" path="res://stages/main_scene.gd" id="1_1n5d8"]
 [ext_resource type="PackedScene" uid="uid://bciv4ehi025yo" path="res://entities/character/player.tscn" id="1_xuk4b"]
@@ -8,9 +8,15 @@
 script = ExtResource("1_1n5d8")
 
 [node name="Player" parent="." unique_id=1183110560 instance=ExtResource("1_xuk4b")]
-position = Vector2(567, 312)
+position = Vector2(956, 535)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1582320420]
-zoom = Vector2(4.89, 4.89)
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+position_smoothing_speed = 2.0
 
 [node name="FadeTransicions" parent="." unique_id=239104663 instance=ExtResource("3_uui7f")]
+scale = Vector2(0.9891042, 1)
