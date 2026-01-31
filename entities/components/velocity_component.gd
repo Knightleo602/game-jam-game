@@ -4,8 +4,8 @@ class_name VelocityComponent extends Node
 @export var acceleration: int = 8
 @export var friction: int = 13
 
-@export var stagger_force_on_weak: float = 150.0
-@export var stagger_force_on_strong: float = 250.0
+@export var stagger_force_on_weak: float = 1500.0
+@export var stagger_force_on_strong: float = 5000.0
 
 var velocity: Vector2 = Vector2.ZERO
 

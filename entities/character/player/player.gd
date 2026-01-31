@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 signal player_died
-signal player_health_changed(new_health: int, old_health: int)
+signal player_health_changed(new_health: int, old_health: int, max_health: int)
 
 @onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var health_component: HealthComponent = $HealthComponent
@@ -34,4 +34,4 @@ func _on_death() -> void:
 
 
 func _on_health_changed(new_health: int, old_health: int) -> void:
-	player_health_changed.emit(new_health, old_health)
+	player_health_changed.emit(new_health, old_health, health_component.max_health)
