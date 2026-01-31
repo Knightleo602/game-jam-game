@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y5ip65vmmi6u"
-path="res://.godot/imported/Sprite-0001.png-70ad36ea2a95195538090374480ff3b9.ctex"
+uid="uid://bs0yf6lsrw6iw"
+path="res://.godot/imported/spr-capanga.png-e86a289f0f2d093b16dae63cb5e67b14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character/Sprite-0001.png"
-dest_files=["res://.godot/imported/Sprite-0001.png-70ad36ea2a95195538090374480ff3b9.ctex"]
+source_file="res://assets/character/enemy/spr-capanga.png"
+dest_files=["res://.godot/imported/spr-capanga.png-e86a289f0f2d093b16dae63cb5e67b14.ctex"]
 
 [params]
 
