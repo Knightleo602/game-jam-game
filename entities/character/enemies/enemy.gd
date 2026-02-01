@@ -7,6 +7,7 @@ signal died(exp: int, score_on_death: int)
 @export var score_on_death: int = 100
 @export var random_move_max_distance: float = 100.0
 @export var random_move_min_distance: float = 40.0
+@export var enemy_blood_trail_scene: PackedScene = preload("res://entities/effects/enemy_blood_trail.tscn")
 
 @onready var movement_component: MovementComponent = $MovementComponent
 @onready var health_component: HealthComponent = $HealthComponent
@@ -35,19 +36,26 @@ func _on_death_despawn_timer_timeout() -> void:
 
 
 func _on_health_component_died() -> void:
+	# create_trail_effect()
 	disable()
 	GameManager.notify_enemy_death($".")
 	died.emit(exp_on_death, score_on_death)
 	death_audio_player.play()
 	animated_sprite.queue_free()
 
+
 func disable() -> void:
 	hurtbox_component.queue_free()
 	hitbox_component.queue_free()
 	$CollisionShape2D.call_deferred("set_disabled", true)
 
-func _on_hurtbox_component_hit_taken(_hit_box: HitboxComponent) -> void:
-	flash_animator.play("flash")
+
+func create_trail_effect() -> void:
+	print("Creating enemy blood trail effect.")
+	var trail: EnemyBloodTrail = enemy_blood_trail_scene.instantiate()
+	trail.target = player
+	add_child(trail)
+	trail.global_position = global_position
 
 
 func _on_death_sound_player_finished() -> void:

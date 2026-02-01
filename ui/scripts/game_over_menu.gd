@@ -30,3 +30,4 @@ func _on_fade_timer_timeout() -> void:
 func _on_player_player_died() -> void:
 	get_tree().paused = true
 	$CanvasLayer.visible = true
+	$AudioStreamPlayer.play()

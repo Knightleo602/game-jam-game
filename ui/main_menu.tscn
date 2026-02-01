@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://eb8x38uy0usc" path="res://assets/menu/spr-menu-ranking-branco.png" id="4_ubpvv"]
 [ext_resource type="Texture2D" uid="uid://uia62ajy5yfr" path="res://assets/menu/spr-menu-sair.png" id="5_arv2f"]
 [ext_resource type="Texture2D" uid="uid://cusgllgtk8wya" path="res://assets/menu/spr-menu-sair-branco.png" id="6_5klac"]
+[ext_resource type="AudioStream" uid="uid://basoikfc43g2y" path="res://assets/sound/MENU.wav" id="12_jiymt"]
 
 [node name="MainMenu" type="Node2D" unique_id=546047650]
 process_mode = 3
@@ -132,6 +133,11 @@ visible = false
 
 [node name="FadeTimer" type="Timer" parent="FadeTransicions" unique_id=541123251]
 wait_time = 0.5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=812985070]
+stream = ExtResource("12_jiymt")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="button_down" from="CanvasLayer/Menu/MarginContainer2/ButtonManager/StartButton" to="." method="_on_start_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/Menu/MarginContainer2/ButtonManager/Ranking" to="." method="_on_ranking_button_down"]
