@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://jjnxkj32kjb" path="res://common/camera.tscn" id="5_3rkkq"]
 [ext_resource type="PackedScene" uid="uid://cdsork0fui4y6" path="res://entities/character/enemies/enemy.tscn" id="5_7rt5u"]
 [ext_resource type="PackedScene" uid="uid://ccpbqu2hqer7g" path="res://entities/components/velocity_component.tscn" id="6_3rkkq"]
+[ext_resource type="PackedScene" uid="uid://clq4jg4gw8d8y" path="res://ui/game_over_menu.tscn" id="6_jau11"]
 
 [sub_resource type="Curve2D" id="Curve2D_7rt5u"]
 _data = {
@@ -16,12 +17,6 @@ point_count = 5
 [node name="MainScene" type="Node2D" unique_id=2138036064]
 script = ExtResource("1_1n5d8")
 enemies = Array[PackedScene]([ExtResource("5_7rt5u")])
-
-[node name="FadeTransicions" parent="." unique_id=239104663 instance=ExtResource("3_uui7f")]
-offset_left = 81.0
-offset_top = 7.0
-offset_right = 2001.0
-offset_bottom = 1087.0
 
 [node name="EnemySpawnTimer" type="Timer" parent="." unique_id=815990503]
 autostart = true
@@ -64,5 +59,18 @@ rotates = false
 
 [node name="Position2D" type="Marker2D" parent="ObjectLayer/Player/Camera/EnemySpawnPath/PathFollow2D" unique_id=1561179251]
 
+[node name="FadeTransicions" parent="." unique_id=239104663 instance=ExtResource("3_uui7f")]
+offset_left = -1135.0
+offset_top = -737.0
+offset_right = 2143.0
+offset_bottom = 1388.0
+
+[node name="GameOverMenu" parent="." unique_id=546047650 instance=ExtResource("6_jau11")]
+
+[node name="Timer" type="Timer" parent="." unique_id=1825071916]
+one_shot = true
+
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="player_died" from="ObjectLayer/Player" to="GameOverMenu" method="_on_player_player_died"]
 [connection signal="player_health_changed" from="ObjectLayer/Player" to="." method="_on_player_player_health_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

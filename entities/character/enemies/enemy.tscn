@@ -101,7 +101,6 @@ knockback_component = NodePath("../KnockbackComponent")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1540721657]
 script = ExtResource("1_5ynui")
-health = 500
 debug_mode = true
 metadata/_custom_type_script = "uid://c8fxjphxm1fxc"
 

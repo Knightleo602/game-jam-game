@@ -1,22 +1,18 @@
-[gd_scene format=3 uid="uid://h4pa2c07dru1"]
+[gd_scene format=3 uid="uid://clq4jg4gw8d8y"]
 
-[ext_resource type="Script" uid="uid://bvtcumcdywngg" path="res://ui/scripts/main_menu.gd" id="1_t7e0r"]
-[ext_resource type="PackedScene" uid="uid://cv5df3wnyj0io" path="res://ui/fade_transicions.tscn" id="2_0dkrt"]
-[ext_resource type="Texture2D" uid="uid://bdo37alqa0aqa" path="res://assets/menu/spr-menu-mascara.png" id="2_5klac"]
-[ext_resource type="Texture2D" uid="uid://b80ix2qnjdaeu" path="res://assets/menu/spr-menu-jogar.png" id="2_wk0pr"]
-[ext_resource type="Script" uid="uid://dmw3m2eno3uq" path="res://ui/scripts/back_mask.gd" id="3_lsdqh"]
-[ext_resource type="Texture2D" uid="uid://o3rt14mraf2y" path="res://assets/menu/spr-menu-ranking.png" id="3_p8ri8"]
-[ext_resource type="Texture2D" uid="uid://onxanvrjvbdk" path="res://assets/menu/spr-menu-jogar-branco.png" id="3_ubpvv"]
-[ext_resource type="Texture2D" uid="uid://eb8x38uy0usc" path="res://assets/menu/spr-menu-ranking-branco.png" id="4_ubpvv"]
-[ext_resource type="Texture2D" uid="uid://uia62ajy5yfr" path="res://assets/menu/spr-menu-sair.png" id="5_arv2f"]
-[ext_resource type="Texture2D" uid="uid://cusgllgtk8wya" path="res://assets/menu/spr-menu-sair-branco.png" id="6_5klac"]
+[ext_resource type="Script" uid="uid://36fdfu0y5jbk" path="res://ui/scripts/game_over_menu.gd" id="1_01h4p"]
+[ext_resource type="Texture2D" uid="uid://bvqow04ub1nik" path="res://assets/hud/spr-mascara-100quebrada.png" id="2_nn02g"]
+[ext_resource type="Script" uid="uid://dmw3m2eno3uq" path="res://ui/scripts/back_mask.gd" id="3_xuo5i"]
+[ext_resource type="Texture2D" uid="uid://ov3v10xeyilo" path="res://assets/menu/spr-gameover.png" id="4_jfi2q"]
+[ext_resource type="Texture2D" uid="uid://caw72tkxg86tr" path="res://assets/menu/spr-restart.png" id="5_nn02g"]
+[ext_resource type="Texture2D" uid="uid://deoj2oegk0x44" path="res://assets/menu/spr-restart-branco.png" id="6_jfi2q"]
+[ext_resource type="Texture2D" uid="uid://uia62ajy5yfr" path="res://assets/menu/spr-menu-sair.png" id="8_q8428"]
+[ext_resource type="Texture2D" uid="uid://cusgllgtk8wya" path="res://assets/menu/spr-menu-sair-branco.png" id="9_pgjxa"]
+[ext_resource type="PackedScene" uid="uid://cv5df3wnyj0io" path="res://ui/fade_transicions.tscn" id="10_6d44m"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0dkrt"]
-load_path = "res://.godot/imported/spr-menu-titulo.png-d53be3605753ed3fe2ce9ad360a911d4.ctex"
-
-[node name="MainMenu" type="Node2D" unique_id=546047650]
+[node name="GameOverMenu" type="Node2D" unique_id=546047650]
 process_mode = 3
-script = ExtResource("1_t7e0r")
+script = ExtResource("1_01h4p")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1044764875]
 
@@ -39,17 +35,17 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = -401.0
+offset_left = -376.0
 offset_top = 32.0
-offset_right = 500.0
+offset_right = 525.0
 offset_bottom = 32.0
 grow_vertical = 2
 scale = Vector2(0.9, 0.9)
-texture = ExtResource("2_5klac")
+texture = ExtResource("2_nn02g")
 expand_mode = 2
 stretch_mode = 5
-script = ExtResource("3_lsdqh")
-speed = 1.44
+script = ExtResource("3_xuo5i")
+speed = 4.0
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Menu" unique_id=664991465]
 layout_mode = 1
@@ -57,18 +53,18 @@ anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -288.99994
+offset_left = -264.0
 offset_top = 8.0
-offset_right = 359.0
+offset_right = 384.0
 offset_bottom = 8.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(0.9, 0.9)
-texture = ExtResource("2_5klac")
+texture = ExtResource("2_nn02g")
 expand_mode = 2
 stretch_mode = 5
-script = ExtResource("3_lsdqh")
-speed = -1.5899999999999999
+script = ExtResource("3_xuo5i")
+speed = -4.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Menu" unique_id=1603829976]
 layout_mode = 1
@@ -84,7 +80,7 @@ theme_override_constants/margin_top = 32
 [node name="Title" type="TextureRect" parent="CanvasLayer/Menu/MarginContainer" unique_id=1894481064]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-texture = SubResource("CompressedTexture2D_0dkrt")
+texture = ExtResource("4_jfi2q")
 expand_mode = 3
 stretch_mode = 4
 
@@ -113,29 +109,25 @@ theme_override_constants/separation = 84
 [node name="StartButton" type="TextureButton" parent="CanvasLayer/Menu/MarginContainer2/ButtonManager" unique_id=999299210]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("2_wk0pr")
-texture_hover = ExtResource("3_ubpvv")
-
-[node name="Ranking" type="TextureButton" parent="CanvasLayer/Menu/MarginContainer2/ButtonManager" unique_id=1364206215]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-texture_normal = ExtResource("3_p8ri8")
-texture_hover = ExtResource("4_ubpvv")
+texture_normal = ExtResource("5_nn02g")
+texture_hover = ExtResource("6_jfi2q")
 
 [node name="Quit" type="TextureButton" parent="CanvasLayer/Menu/MarginContainer2/ButtonManager" unique_id=1329826898]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("5_arv2f")
-texture_hover = ExtResource("6_5klac")
+texture_normal = ExtResource("8_q8428")
+texture_hover = ExtResource("9_pgjxa")
 
-[node name="FadeTransicions" parent="." unique_id=239104663 instance=ExtResource("2_0dkrt")]
+[node name="FadeTransicions" parent="." unique_id=239104663 instance=ExtResource("10_6d44m")]
 visible = false
 
 [node name="FadeTimer" type="Timer" parent="FadeTransicions" unique_id=541123251]
-wait_time = 0.5
+wait_time = 0.14100000000000001
+
+[node name="Timer" type="Timer" parent="." unique_id=493595124]
+wait_time = 0.177
 
 [connection signal="button_down" from="CanvasLayer/Menu/MarginContainer2/ButtonManager/StartButton" to="." method="_on_start_button_button_down"]
-[connection signal="button_down" from="CanvasLayer/Menu/MarginContainer2/ButtonManager/Ranking" to="." method="_on_ranking_button_down"]
 [connection signal="button_down" from="CanvasLayer/Menu/MarginContainer2/ButtonManager/Quit" to="." method="_on_quit_button_down"]
 [connection signal="timeout" from="FadeTransicions/FadeTimer" to="." method="_on_fade_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

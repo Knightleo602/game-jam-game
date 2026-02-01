@@ -10,6 +10,7 @@
 load_path = "res://.godot/imported/spr-mascara-quebrando90.png-c7e7318c4fbf1f46f556c622b8bffe6b.ctex"
 
 [node name="Hud" type="CanvasLayer" unique_id=1615795096]
+process_mode = 3
 script = ExtResource("1_kwc50")
 
 [node name="MaskBar" type="TextureProgressBar" parent="." unique_id=146120109]
@@ -25,6 +26,7 @@ grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.125, 0.125)
 pivot_offset_ratio = Vector2(0.5, 0.95)
+fill_mode = 3
 texture_under = ExtResource("2_o2lis")
 texture_over = SubResource("CompressedTexture2D_kwc50")
 texture_progress = ExtResource("4_aixkq")
