@@ -1,20 +1,19 @@
-[gd_scene format=3 uid="uid://clq4jg4gw8d8y"]
+[gd_scene format=3 uid="uid://bva0ek84oqlme"]
 
-[ext_resource type="Script" uid="uid://36fdfu0y5jbk" path="res://ui/scripts/game_over_menu.gd" id="1_01h4p"]
-[ext_resource type="Texture2D" uid="uid://bvqow04ub1nik" path="res://assets/hud/spr-mascara-100quebrada.png" id="2_nn02g"]
-[ext_resource type="Script" uid="uid://dmw3m2eno3uq" path="res://ui/scripts/back_mask.gd" id="3_xuo5i"]
-[ext_resource type="Texture2D" uid="uid://ov3v10xeyilo" path="res://assets/menu/spr-gameover.png" id="4_jfi2q"]
-[ext_resource type="Texture2D" uid="uid://caw72tkxg86tr" path="res://assets/menu/spr-restart.png" id="5_nn02g"]
-[ext_resource type="Texture2D" uid="uid://deoj2oegk0x44" path="res://assets/menu/spr-restart-branco.png" id="6_jfi2q"]
-[ext_resource type="Texture2D" uid="uid://uia62ajy5yfr" path="res://assets/menu/spr-menu-sair.png" id="8_q8428"]
-[ext_resource type="Texture2D" uid="uid://cusgllgtk8wya" path="res://assets/menu/spr-menu-sair-branco.png" id="9_pgjxa"]
-[ext_resource type="PackedScene" uid="uid://cv5df3wnyj0io" path="res://ui/fade_transicions.tscn" id="10_6d44m"]
+[ext_resource type="Script" uid="uid://bok4l2rdl3b3t" path="res://ui/scripts/pause_menu.gd" id="1_jyvtb"]
+[ext_resource type="Texture2D" uid="uid://c8x052agqqo1y" path="res://assets/menu/spr-menu-titulo.png" id="2_j3kxr"]
+[ext_resource type="Texture2D" uid="uid://caw72tkxg86tr" path="res://assets/menu/spr-restart.png" id="5_reb5t"]
+[ext_resource type="Texture2D" uid="uid://deoj2oegk0x44" path="res://assets/menu/spr-restart-branco.png" id="6_jcxce"]
+[ext_resource type="Texture2D" uid="uid://uia62ajy5yfr" path="res://assets/menu/spr-menu-sair.png" id="7_72dg2"]
+[ext_resource type="Texture2D" uid="uid://cusgllgtk8wya" path="res://assets/menu/spr-menu-sair-branco.png" id="8_0vwb3"]
+[ext_resource type="PackedScene" uid="uid://cv5df3wnyj0io" path="res://ui/fade_transicions.tscn" id="9_xnge7"]
 
-[node name="GameOverMenu" type="Node2D" unique_id=546047650]
+[node name="PauseMenu" type="Node2D" unique_id=546047650]
 process_mode = 3
-script = ExtResource("1_01h4p")
+script = ExtResource("1_jyvtb")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1044764875]
+layer = 5
 
 [node name="Menu" type="Control" parent="CanvasLayer" unique_id=877733964]
 layout_mode = 3
@@ -31,40 +30,6 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Menu" unique_id=1799854450]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = -376.0
-offset_top = 32.0
-offset_right = 525.0
-offset_bottom = 32.0
-grow_vertical = 2
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("2_nn02g")
-expand_mode = 2
-stretch_mode = 5
-script = ExtResource("3_xuo5i")
-
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Menu" unique_id=664991465]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -264.0
-offset_top = 8.0
-offset_right = 384.0
-offset_bottom = 8.0
-grow_horizontal = 0
-grow_vertical = 2
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("2_nn02g")
-expand_mode = 2
-stretch_mode = 5
-script = ExtResource("3_xuo5i")
-speed = -2.0
-
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Menu" unique_id=1603829976]
 layout_mode = 1
 anchors_preset = 5
@@ -79,7 +44,7 @@ theme_override_constants/margin_top = 32
 [node name="Title" type="TextureRect" parent="CanvasLayer/Menu/MarginContainer" unique_id=1894481064]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
-texture = ExtResource("4_jfi2q")
+texture = ExtResource("2_j3kxr")
 expand_mode = 3
 stretch_mode = 4
 
@@ -108,23 +73,23 @@ theme_override_constants/separation = 84
 [node name="StartButton" type="TextureButton" parent="CanvasLayer/Menu/MarginContainer2/ButtonManager" unique_id=999299210]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("5_nn02g")
-texture_hover = ExtResource("6_jfi2q")
+texture_normal = ExtResource("5_reb5t")
+texture_hover = ExtResource("6_jcxce")
 
 [node name="Quit" type="TextureButton" parent="CanvasLayer/Menu/MarginContainer2/ButtonManager" unique_id=1329826898]
 layout_mode = 2
 size_flags_horizontal = 4
-texture_normal = ExtResource("8_q8428")
-texture_hover = ExtResource("9_pgjxa")
+texture_normal = ExtResource("7_72dg2")
+texture_hover = ExtResource("8_0vwb3")
 
-[node name="FadeTransicions" parent="." unique_id=239104663 instance=ExtResource("10_6d44m")]
+[node name="FadeTransicions" parent="." unique_id=239104663 instance=ExtResource("9_xnge7")]
 visible = false
 
 [node name="FadeTimer" type="Timer" parent="FadeTransicions" unique_id=541123251]
-wait_time = 0.14100000000000001
+wait_time = 0.141
 
 [node name="Timer" type="Timer" parent="." unique_id=493595124]
-wait_time = 0.177
+wait_time = 0.5
 
 [connection signal="button_down" from="CanvasLayer/Menu/MarginContainer2/ButtonManager/StartButton" to="." method="_on_start_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/Menu/MarginContainer2/ButtonManager/Quit" to="." method="_on_quit_button_down"]

@@ -19,7 +19,10 @@ var initial_x: float = 0.0
 @onready var mask_bar = $MaskBar # Seu TextureProgressBar principal
 @onready var level_up_screen = $LevelUp
 
+var score: int
+
 func _ready():
+	score = 0
 	visible = true
 	
 	# Configurações iniciais da Barra
@@ -48,6 +51,7 @@ func _ready():
 	# Conexão da Customização (Snapshot da máscara)
 	HudManager.mascara_alterada.connect(_on_level_up_finish)
 	GameManager.player_died.connect(_on_game_over)
+	GameManager.enemy_defeated_obj.connect(_on_enemy_death)
 
 func _process(delta):
 	# EFEITO DE TREMOR (SHAKE)
@@ -111,3 +115,8 @@ func _on_level_up_finish(nova_textura: ImageTexture):
 	
 func _on_game_over(score: int):
 	visible = false
+	
+func _on_enemy_death(enemy: Enemy):
+	score += enemy.score_on_death
+	$Score/HBoxContainer/Label.text = str(score)
+	
