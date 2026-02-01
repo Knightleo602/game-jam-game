@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 func _process(_delta: float) -> void:
 	if health_component.is_dead():
 		return
-	movement_component.animate_movement()
+	# movement_component.animate_movement()
 
 
 func _on_death() -> void:

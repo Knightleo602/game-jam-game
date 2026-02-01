@@ -13,9 +13,6 @@ class_name MovementComponent extends Node
 @export var anim_idle: String = "idle"
 @export var anim_stagger: String = "stagger"
 
-@export_group("Extra options")
-@export var animate = true
-
 
 func _ready() -> void:
 	assert(velocity_component != null, "VelocityComponent not assigned in MovementComponent")
@@ -41,8 +38,6 @@ func move(character: CharacterBody2D, direction: Vector2, delta: float = get_phy
 
 
 func animate_movement():
-	if not animate:
-		return
 	if velocity_component.velocity.x > 0:
 		animated_sprite.play(anim_walk_horizontal)
 		animated_sprite.scale.x = 1
@@ -58,5 +53,5 @@ func animate_movement():
 
 
 func _take_hit(hit_box: HitboxComponent) -> void:
-	var direction = - (hit_box.global_position - hurtbox_component.global_position).normalized()
+	var direction = (hurtbox_component.global_position - hit_box.hit_source.global_position).normalized()
 	knockback_component.knockback(direction, hit_box.hit_strength)

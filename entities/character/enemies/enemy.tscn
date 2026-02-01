@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://cdsork0fui4y6"]
 
 [ext_resource type="Script" uid="uid://c8fxjphxm1fxc" path="res://entities/components/health_component.gd" id="1_5ynui"]
+[ext_resource type="Script" uid="uid://b68yb3qovd2x8" path="res://entities/character/enemies/enemy.gd" id="1_66ov2"]
+[ext_resource type="PackedScene" uid="uid://slojcui6rutk" path="res://entities/components/knockback_component.tscn" id="2_dmhmg"]
 [ext_resource type="Script" uid="uid://dk2626lfapnm1" path="res://entities/components/velocity_component.gd" id="2_hc4o0"]
+[ext_resource type="PackedScene" uid="uid://ccpbqu2hqer7g" path="res://entities/components/velocity_component.tscn" id="3_0ec8b"]
 [ext_resource type="Texture2D" uid="uid://bs0yf6lsrw6iw" path="res://assets/character/enemy/spr-capanga.png" id="3_ajdog"]
+[ext_resource type="PackedScene" uid="uid://mclab3abpbdk" path="res://entities/components/movement_component.tscn" id="4_dwqx1"]
 [ext_resource type="PackedScene" uid="uid://bjvcrr31ywf8q" path="res://entities/components/hurtbox_component.tscn" id="4_pp0wr"]
 [ext_resource type="PackedScene" uid="uid://1h1j3w4uclbl" path="res://entities/components/hitbox_component.tscn" id="5_ajdog"]
 
@@ -24,21 +28,31 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pp0wr"]
 size = Vector2(89, 99.75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajdog"]
-size = Vector2(78, 140)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lrlt3"]
-size = Vector2(44, 57.5)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_lrlt3"]
 radius = 14.0
 
 [node name="Enemy" type="CharacterBody2D" unique_id=961511005]
 collision_layer = 4
 collision_mask = 7
+script = ExtResource("1_66ov2")
+
+[node name="KnockbackComponent" parent="." unique_id=1512948786 node_paths=PackedStringArray("velocity_component") instance=ExtResource("2_dmhmg")]
+velocity_component = NodePath("VelocityComponent2")
+
+[node name="VelocityComponent2" parent="KnockbackComponent" unique_id=436425407 instance=ExtResource("3_0ec8b")]
+max_speed = 10
+acceleration = 4.0
+friction = 4.0
+
+[node name="MovementComponent" parent="." unique_id=24134777 node_paths=PackedStringArray("velocity_component", "hurtbox_component", "animated_sprite", "knockback_component") instance=ExtResource("4_dwqx1")]
+velocity_component = NodePath("../VelocityComponent")
+hurtbox_component = NodePath("../HurtboxComponent")
+animated_sprite = NodePath("../AnimatedSprite2D")
+knockback_component = NodePath("../KnockbackComponent")
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1540721657]
 script = ExtResource("1_5ynui")
+health = 500
 debug_mode = true
 metadata/_custom_type_script = "uid://c8fxjphxm1fxc"
 
@@ -59,15 +73,8 @@ collision_layer = 4
 collision_mask = 10
 health_component = NodePath("../HealthComponent")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1910366673]
-position = Vector2(6, 22)
-shape = SubResource("RectangleShape2D_ajdog")
-debug_color = Color(1.9011646e-06, 0.65241104, 0.020100364, 0.41960785)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1006680685]
-position = Vector2(-23, -81)
-shape = SubResource("RectangleShape2D_lrlt3")
-debug_color = Color(0, 0.6511708, 0.060456805, 0.41960785)
+[node name="Node2D" type="CollisionPolygon2D" parent="HurtboxComponent" unique_id=844474461]
+polygon = PackedVector2Array(-45, 2, -43, -114, -3, -99, 41, -34, 53, 93, -39, 89)
 
 [node name="HitboxComponent" parent="." unique_id=962314165 instance=ExtResource("5_ajdog")]
 collision_layer = 4
@@ -82,3 +89,10 @@ debug_color = Color(0.81202555, 0.0021079343, 0.983723, 0.41960785)
 position = Vector2(-65, -3)
 shape = SubResource("CircleShape2D_lrlt3")
 debug_color = Color(0.81202555, 0.0021079343, 0.983723, 0.41960785)
+
+[node name="DeathDespawnTimer" type="Timer" parent="." unique_id=475116343]
+wait_time = 10.0
+one_shot = true
+
+[connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="timeout" from="DeathDespawnTimer" to="." method="_on_death_despawn_timer_timeout"]

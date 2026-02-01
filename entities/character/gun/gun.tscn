@@ -4,7 +4,12 @@
 
 [node name="Gun" type="Node2D" unique_id=1984785067]
 script = ExtResource("1_rb21p")
+fire_rate = 0.1
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1561355225]
 
+[node name="ReloadTimer" type="Timer" parent="." unique_id=516815009]
+one_shot = true
+
 [connection signal="timeout" from="FireRateTimer" to="." method="shoot_bullet"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]

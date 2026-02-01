@@ -8,12 +8,12 @@ enum KnockbackStrength {
 @export var velocity_component: VelocityComponent
 
 @export_group("Weak Knockback Settings")
-@export var force_on_weak: int = 5
-@export var duration_on_weak: float = 0.2
+@export var force_on_weak: float = 10.0
+@export var duration_on_weak: float = 0.12
 
 @export_group("Strong Knockback Settings")
-@export var force_on_strong: int = 5
-@export var duration_on_strong: float = 0.4
+@export var force_on_strong: float = 30.0
+@export var duration_on_strong: float = 0.3
 
 
 var _knockback_vector: Vector2 = Vector2.ZERO
@@ -23,7 +23,7 @@ func _ready() -> void:
 	assert(velocity_component != null, "VelocityComponent not assigned in KnockbackComponent")
 
 func knockback(direction: Vector2, hit_strength: KnockbackStrength) -> void:
-	var force: int
+	var force: float
 	if hit_strength == KnockbackStrength.WEAK:
 		force = force_on_weak
 		_knockback_timer = duration_on_weak
