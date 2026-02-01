@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dgipnqfv8g6kp"]
 
-[ext_resource type="Script" uid="uid://vr121va4dfsr" path="res://entities/character/bullet/bullet.gd" id="1_ys2a0"]
+[ext_resource type="Script" uid="uid://vr121va4dfsr" path="res://entities/character/weapon/bullet/bullet.gd" id="1_ys2a0"]
 [ext_resource type="PackedScene" uid="uid://1h1j3w4uclbl" path="res://entities/components/hitbox_component.tscn" id="2_p8gu1"]
 [ext_resource type="PackedScene" uid="uid://ccpbqu2hqer7g" path="res://entities/components/velocity_component.tscn" id="3_pjrsy"]
 [ext_resource type="Texture2D" uid="uid://c8ynp7dkc6nyw" path="res://assets/character/bullet/bullet.png" id="4_4j35j"]
@@ -65,18 +65,18 @@ _data = {
 
 [node name="Bullet" type="Node2D" unique_id=1129987846]
 script = ExtResource("1_ys2a0")
-speed = 20
+speed = 100
 
 [node name="HitboxComponent" parent="." unique_id=962314165 instance=ExtResource("2_p8gu1")]
 collision_layer = 8
 collision_mask = 4
+damage = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1032640744]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_qxdp6")
 
 [node name="VelocityComponent" parent="." unique_id=436425407 instance=ExtResource("3_pjrsy")]
-max_speed = 300
 friction = 0.3
 
 [node name="DistanceTimeout" type="Timer" parent="." unique_id=2077873900]

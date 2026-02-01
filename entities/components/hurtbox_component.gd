@@ -3,6 +3,8 @@ class_name HurtboxComponent extends Area2D
 signal hit_taken(hit_box: HitboxComponent)
 
 @export var health_component: HealthComponent
+@export var audio_player: AudioStreamPlayer2D
+@export var animation_player: AnimationPlayer
 
 
 func _ready() -> void:
@@ -15,6 +17,10 @@ func can_accept_damage() -> bool:
 
 func take_damage(hit_box: HitboxComponent) -> bool:
 	if can_accept_damage():
+		if audio_player != null:
+			SfxDeconflicter.play(audio_player)
+		if animation_player != null and animation_player.has_animation("flash"):
+			animation_player.play("flash")
 		health_component.take_damage(hit_box.damage)
 		hit_taken.emit(hit_box)
 		hit_box.register_hit(self )
@@ -25,3 +31,6 @@ func take_damage(hit_box: HitboxComponent) -> bool:
 func _on_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		take_damage(area)
+
+func set_activated(activated: bool) -> void:
+	monitoring = activated

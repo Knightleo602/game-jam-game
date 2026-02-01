@@ -6,6 +6,9 @@ signal player_health_changed(new_health: int, old_health: int, max_health: int)
 @onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var movement_component: MovementComponent = $MovementComponent
+@onready var gun: Gun = $AnimatedSprite2D/Gun
+@onready var sword: Sword = $AnimatedSprite2D/Sword
+
 
 func _get_input() -> Vector2:
 	if health_component.is_dead():
@@ -29,6 +32,9 @@ func _process(_delta: float) -> void:
 
 func _on_death() -> void:
 	player_died.emit()
+	gun.disable()
+	sword.disable()
+	movement_component.animated_sprite.stop()
 	print("Player has died.")
 	$AnimatedSprite2D.play("death")
 
