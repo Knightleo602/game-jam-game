@@ -11,6 +11,25 @@
 [ext_resource type="PackedScene" uid="uid://1h1j3w4uclbl" path="res://entities/components/hitbox_component.tscn" id="5_ajdog"]
 [ext_resource type="AudioStream" uid="uid://dne2giil58hnw" path="res://assets/sound/Hit7.wav" id="10_0ec8b"]
 [ext_resource type="AudioStream" uid="uid://n1nkfwdeuemk" path="res://assets/sound/Hit.wav" id="11_dwqx1"]
+[ext_resource type="Animation" uid="uid://c46qd3fn0qkp8" path="res://entities/effects/flash.res" id="13_vj30t"]
+
+[sub_resource type="Shader" id="Shader_dwqx1"]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color : source_color;
+uniform float flash_value : hint_range(0.0, 1.0, 0.1);
+
+void fragment() {
+	vec4 texture_color = texture(TEXTURE, UV);
+	COLOR = mix(texture_color, flash_color, flash_value);
+	COLOR.a = texture_color.a;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vj30t"]
+resource_local_to_scene = true
+shader = SubResource("Shader_dwqx1")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrlt3"]
 atlas = ExtResource("3_ajdog")
@@ -38,6 +57,27 @@ streams_count = 2
 stream_0/stream = ExtResource("10_0ec8b")
 stream_1/stream = ExtResource("11_dwqx1")
 
+[sub_resource type="Animation" id="Animation_dwqx1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4pphs"]
+_data = {
+&"RESET": SubResource("Animation_dwqx1"),
+&"flash": ExtResource("13_vj30t")
+}
+
 [node name="Enemy" type="CharacterBody2D" unique_id=961511005]
 collision_layer = 4
 collision_mask = 7
@@ -45,6 +85,8 @@ script = ExtResource("1_66ov2")
 
 [node name="KnockbackComponent" parent="." unique_id=1512948786 node_paths=PackedStringArray("velocity_component") instance=ExtResource("2_dmhmg")]
 velocity_component = NodePath("VelocityComponent2")
+force_on_strong = 70.0
+duration_on_strong = 0.5
 
 [node name="VelocityComponent2" parent="KnockbackComponent" unique_id=436425407 instance=ExtResource("3_0ec8b")]
 max_speed = 10
@@ -68,6 +110,7 @@ script = ExtResource("2_hc4o0")
 metadata/_custom_type_script = "uid://dk2626lfapnm1"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1436514559]
+material = SubResource("ShaderMaterial_vj30t")
 sprite_frames = SubResource("SpriteFrames_ajdog")
 animation = &"idle"
 
@@ -75,11 +118,12 @@ animation = &"idle"
 position = Vector2(5.5, 36.125)
 shape = SubResource("RectangleShape2D_pp0wr")
 
-[node name="HurtboxComponent" parent="." unique_id=553604298 node_paths=PackedStringArray("health_component", "audio_player") instance=ExtResource("4_pp0wr")]
+[node name="HurtboxComponent" parent="." unique_id=553604298 node_paths=PackedStringArray("health_component", "audio_player", "animation_player") instance=ExtResource("4_pp0wr")]
 collision_layer = 4
 collision_mask = 10
 health_component = NodePath("../HealthComponent")
 audio_player = NodePath("../AudioStreamPlayer2D")
+animation_player = NodePath("../AnimationPlayer")
 
 [node name="Node2D" type="CollisionPolygon2D" parent="HurtboxComponent" unique_id=844474461]
 polygon = PackedVector2Array(-45, 2, -43, -114, -3, -99, 41, -34, 53, 93, -39, 89)
@@ -105,6 +149,9 @@ one_shot = true
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1450021813]
 stream = SubResource("AudioStreamRandomizer_vj30t")
 volume_db = -15.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1363091060]
+libraries/ = SubResource("AnimationLibrary_4pphs")
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="timeout" from="DeathDespawnTimer" to="." method="_on_death_despawn_timer_timeout"]

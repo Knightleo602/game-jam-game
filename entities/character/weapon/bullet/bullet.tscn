@@ -70,7 +70,7 @@ speed = 100
 [node name="HitboxComponent" parent="." unique_id=962314165 instance=ExtResource("2_p8gu1")]
 collision_layer = 8
 collision_mask = 4
-damage = 1
+damage = 25
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1032640744]
 rotation = 1.5707964

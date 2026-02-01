@@ -104,7 +104,7 @@ rotation = 0.44680429
 scale = Vector2(1e-05, 1e-05)
 collision_layer = 8
 collision_mask = 4
-damage = 25
+damage = 60
 hit_strength = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="HitboxComponent" unique_id=241278940]

@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://bciv4ehi025yo"]
 
 [ext_resource type="Script" uid="uid://4opj8a7ja1k4" path="res://entities/character/player/player.gd" id="1_vt0b6"]
+[ext_resource type="Shader" uid="uid://c3fsap6t8rhds" path="res://entities/effects/flash.gdshader" id="2_1h0c8"]
 [ext_resource type="PackedScene" uid="uid://bjvcrr31ywf8q" path="res://entities/components/hurtbox_component.tscn" id="2_3ekpe"]
 [ext_resource type="PackedScene" uid="uid://ccpbqu2hqer7g" path="res://entities/components/velocity_component.tscn" id="2_3hqro"]
 [ext_resource type="PackedScene" uid="uid://bsfv6wukonhes" path="res://entities/character/weapon/sword/sword.tscn" id="2_q0c0e"]
-[ext_resource type="PackedScene" uid="uid://dld2h07b5m84u" path="res://entities/character/gun/gun.tscn" id="3_l8lo3"]
+[ext_resource type="PackedScene" uid="uid://dld2h07b5m84u" path="res://entities/character/weapon/gun/gun.tscn" id="3_l8lo3"]
 [ext_resource type="Texture2D" uid="uid://dmwfumo3ud3b1" path="res://assets/character/player/spr-player-idle-strip06.png" id="3_q0c0e"]
 [ext_resource type="PackedScene" uid="uid://dhathox3teks3" path="res://entities/components/health_component.tscn" id="3_rlso7"]
 [ext_resource type="PackedScene" uid="uid://mclab3abpbdk" path="res://entities/components/movement_component.tscn" id="5_mbi5q"]
@@ -17,6 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://bsbyswc5jnogs" path="res://assets/hud/spr-mascara-linhas-3.png" id="11_5hl2u"]
 [ext_resource type="AudioStream" uid="uid://dne2giil58hnw" path="res://assets/sound/Hit7.wav" id="16_bl6sn"]
 [ext_resource type="AudioStream" uid="uid://n1nkfwdeuemk" path="res://assets/sound/Hit.wav" id="17_3vmqp"]
+[ext_resource type="Animation" uid="uid://c46qd3fn0qkp8" path="res://entities/effects/flash.res" id="19_8cih3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lxd0"]
+shader = ExtResource("2_1h0c8")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_na8bb"]
 atlas = ExtResource("3_q0c0e")
@@ -80,12 +87,34 @@ streams_count = 2
 stream_0/stream = ExtResource("16_bl6sn")
 stream_1/stream = ExtResource("17_3vmqp")
 
+[sub_resource type="Animation" id="Animation_dwqx1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nx36u"]
+_data = {
+&"RESET": SubResource("Animation_dwqx1"),
+&"flash": ExtResource("19_8cih3")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=1183110560]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_vt0b6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1225882282]
+material = SubResource("ShaderMaterial_0lxd0")
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2oupo")
 animation = &"idle"
@@ -103,12 +132,13 @@ position = Vector2(-52, -54)
 position = Vector2(4, 44)
 shape = SubResource("RectangleShape2D_vt0b6")
 
-[node name="HurtboxComponent" parent="." unique_id=553604298 node_paths=PackedStringArray("health_component", "audio_player") instance=ExtResource("2_3ekpe")]
+[node name="HurtboxComponent" parent="." unique_id=553604298 node_paths=PackedStringArray("health_component", "audio_player", "animation_player") instance=ExtResource("2_3ekpe")]
 position = Vector2(-29, -47)
 collision_layer = 2
 collision_mask = 4
 health_component = NodePath("../HealthComponent")
 audio_player = NodePath("../AudioStreamPlayer2D")
+animation_player = NodePath("../AnimationPlayer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=843075085]
 position = Vector2(32.5, 83.5)
@@ -158,6 +188,9 @@ texture_low = ExtResource("11_5hl2u")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=137848723]
 stream = SubResource("AudioStreamRandomizer_1h0c8")
 volume_db = -15.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1267669980]
+libraries/ = SubResource("AnimationLibrary_nx36u")
 
 [connection signal="player_health_changed" from="." to="Hud/MaskBar" method="_on_player_player_health_changed"]
 [connection signal="died" from="HealthComponent" to="." method="_on_death"]

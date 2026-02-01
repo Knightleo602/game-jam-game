@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cv5df3wnyj0io" path="res://ui/fade_transicions.tscn" id="3_uui7f"]
 [ext_resource type="PackedScene" uid="uid://jjnxkj32kjb" path="res://common/camera.tscn" id="5_3rkkq"]
 [ext_resource type="PackedScene" uid="uid://cdsork0fui4y6" path="res://entities/character/enemies/enemy.tscn" id="5_7rt5u"]
+[ext_resource type="PackedScene" uid="uid://ccpbqu2hqer7g" path="res://entities/components/velocity_component.tscn" id="6_3rkkq"]
 
 [sub_resource type="Curve2D" id="Curve2D_7rt5u"]
 _data = {
@@ -22,10 +23,17 @@ offset_top = 7.0
 offset_right = 2001.0
 offset_bottom = 1087.0
 
-[node name="Player" parent="." unique_id=1183110560 instance=ExtResource("1_3r8lt")]
+[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=815990503]
+autostart = true
+
+[node name="ObjectLayer" type="TileMapLayer" parent="." unique_id=1006511766]
+y_sort_enabled = true
+
+[node name="Player" parent="ObjectLayer" unique_id=1183110560 instance=ExtResource("1_3r8lt")]
+unique_name_in_owner = true
 position = Vector2(626, 314)
 
-[node name="Camera" parent="Player" unique_id=669381075 instance=ExtResource("5_3rkkq")]
+[node name="Camera" parent="ObjectLayer/Player" unique_id=669381075 node_paths=PackedStringArray("velocity_component") instance=ExtResource("5_3rkkq")]
 process_callback = 0
 limit_enabled = false
 position_smoothing_enabled = true
@@ -36,21 +44,25 @@ drag_left_margin = 0.07
 drag_top_margin = 0.07
 drag_right_margin = 0.07
 drag_bottom_margin = 0.07
+velocity_component = NodePath("VelocityComponent")
+shake_random_strength = 25.0
 
-[node name="EnemySpawnPath" type="Path2D" parent="Player/Camera" unique_id=1794835293]
+[node name="VelocityComponent" parent="ObjectLayer/Player/Camera" unique_id=436425407 instance=ExtResource("6_3rkkq")]
+max_speed = 500
+acceleration = 20.0
+friction = 2.0
+
+[node name="EnemySpawnPath" type="Path2D" parent="ObjectLayer/Player/Camera" unique_id=1794835293]
 position = Vector2(-756.6317, -428.03888)
 scale = Vector2(1.1540551, 1.3246144)
 curve = SubResource("Curve2D_7rt5u")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Player/Camera/EnemySpawnPath" unique_id=1160707530]
+[node name="PathFollow2D" type="PathFollow2D" parent="ObjectLayer/Player/Camera/EnemySpawnPath" unique_id=1160707530]
 position = Vector2(1907, -425)
 rotation = 1.562732
 rotates = false
 
-[node name="Position2D" type="Marker2D" parent="Player/Camera/EnemySpawnPath/PathFollow2D" unique_id=1561179251]
+[node name="Position2D" type="Marker2D" parent="ObjectLayer/Player/Camera/EnemySpawnPath/PathFollow2D" unique_id=1561179251]
 
-[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=815990503]
-autostart = true
-
-[connection signal="player_health_changed" from="Player" to="." method="_on_player_player_health_changed"]
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="player_health_changed" from="ObjectLayer/Player" to="." method="_on_player_player_health_changed"]

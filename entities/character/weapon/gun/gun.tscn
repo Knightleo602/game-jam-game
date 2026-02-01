@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dld2h07b5m84u"]
 
-[ext_resource type="Script" uid="uid://bbag0ipa3rc2m" path="res://entities/character/gun/gun.gd" id="1_rb21p"]
+[ext_resource type="Script" uid="uid://bbag0ipa3rc2m" path="res://entities/character/weapon/gun/gun.gd" id="1_rb21p"]
 [ext_resource type="AudioStream" uid="uid://dfiq7pgtv1srv" path="res://assets/sound/Explosion3.wav" id="2_4bsfm"]
 [ext_resource type="AudioStream" uid="uid://b0g4sqvl1puhw" path="res://assets/sound/Explosion4.wav" id="3_5k3b7"]
 [ext_resource type="AudioStream" uid="uid://ogf0xofgd0d5" path="res://assets/sound/Explosion.wav" id="4_y3o73"]

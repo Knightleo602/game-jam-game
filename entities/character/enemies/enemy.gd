@@ -1,9 +1,10 @@
-extends CharacterBody2D
+class_name Enemy extends CharacterBody2D
 
-signal died(exp: int)
+signal died(exp: int, score_on_death: int)
 
 @export var player: Player
 @export var exp_on_death: int = 10
+@export var score_on_death: int = 100
 @export var random_move_max_distance: float = 100.0
 @export var random_move_min_distance: float = 40.0
 
@@ -13,6 +14,7 @@ signal died(exp: int)
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var death_despawn_timer: Timer = $DeathDespawnTimer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var flash_animator: AnimationPlayer = $AnimationPlayer
 
 var random_movement: Vector2 = Vector2.ZERO
 
@@ -33,11 +35,14 @@ func _on_death_despawn_timer_timeout() -> void:
 
 func _on_health_component_died() -> void:
 	disable()
-	died.emit(exp_on_death)
+	died.emit(exp_on_death, score_on_death)
 	death_despawn_timer.start()
 	animated_sprite.play("death")
 
 func disable() -> void:
-	hurtbox_component.set_activated(false)
-	hitbox_component.set_activated(false)
+	hurtbox_component.queue_free()
+	hitbox_component.queue_free()
 	$CollisionShape2D.call_deferred("set_disabled", true)
+
+func _on_hurtbox_component_hit_taken(_hit_box: HitboxComponent) -> void:
+	flash_animator.play("flash")

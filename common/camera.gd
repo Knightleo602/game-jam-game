@@ -5,8 +5,6 @@ class_name Camera extends Camera2D
 @export var max_zoom_out: float = 0.4
 @export var shake_random_strength: float = 5.0
 
-@export var camera_max_distance: float = 50.0
-
 @onready var rng = RandomNumberGenerator.new()
 
 var shake: float = 0

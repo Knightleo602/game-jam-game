@@ -54,4 +54,5 @@ func animate_movement():
 
 func _take_hit(hit_box: HitboxComponent) -> void:
 	var direction = (hurtbox_component.global_position - hit_box.hit_source.global_position).normalized()
+	# animated_sprite.play(anim_stagger)
 	knockback_component.knockback(direction, hit_box.hit_strength)
