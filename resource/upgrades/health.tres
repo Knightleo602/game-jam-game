@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_a1md2")
 icon = ExtResource("1_qur55")
-title = "Medkit"
+title = "Atadura"
 description = "+ 50 de Vida"
 attribute_name = "health"
 value_modifier = 50.0

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_db80v")
 icon = ExtResource("1_7ktdh")
-title = "Vento"
+title = "Gatilho rápido"
 description = "+ 10% de Velocidade de Ataque"
 attribute_name = "gunAtkSpeed"
 metadata/_custom_type_script = "uid://dxw8o01m7ksjq"

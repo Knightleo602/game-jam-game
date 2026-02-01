@@ -41,14 +41,17 @@ func animate_movement():
 	if velocity_component.velocity.x > 0:
 		# animated_sprite.play(anim_walk_horizontal)
 		animated_sprite.scale.x = -1
+		animated_sprite.play("walk")
 	elif velocity_component.velocity.x < 0:
 		# animated_sprite.play(anim_walk_horizontal)
 		animated_sprite.scale.x = 1
+		animated_sprite.play("walk")
 	# elif velocity_component.velocity.y > 0:
 		# animated_sprite.play(anim_walk_down)
 	# elif velocity_component.velocity.y < 0:
 	 	# animated_sprite.play(anim_walk_up)
 	else:
+		animated_sprite.stop()
 		animated_sprite.play(anim_idle)
 
 

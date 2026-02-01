@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_7rndn")
 icon = ExtResource("1_7vm4y")
-title = "Vento"
+title = "Recarga"
 description = "+ 15% na Recarga de munições"
 attribute_name = "gunReload"
 value_modifier = 15.0
