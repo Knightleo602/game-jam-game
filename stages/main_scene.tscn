@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://crilrrgqbclja"]
+[gd_scene format=3 uid="uid://crilrrgqbclja"]
 
 [ext_resource type="Script" uid="uid://bflev4pkv4x8b" path="res://stages/main_scene.gd" id="1_1n5d8"]
 [ext_resource type="PackedScene" uid="uid://bciv4ehi025yo" path="res://entities/character/player/player.tscn" id="1_3r8lt"]
@@ -31,7 +31,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="ObjectLayer" unique_id=1183110560 instance=ExtResource("1_3r8lt")]
 unique_name_in_owner = true
-position = Vector2(626, 314)
+position = Vector2(519, 314)
 
 [node name="Camera" parent="ObjectLayer/Player" unique_id=669381075 node_paths=PackedStringArray("velocity_component") instance=ExtResource("5_3rkkq")]
 process_callback = 0
