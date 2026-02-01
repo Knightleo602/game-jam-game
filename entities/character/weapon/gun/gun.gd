@@ -8,6 +8,7 @@ signal ammo_changed(new_ammo: int, max_ammo: int)
 @export var reload_time: float = 0.4
 @export var fire_rate: float = 0.5
 @export var enabled: bool = true
+@export var extra_bullet_damage: int = 0
 
 @onready var reload_timer: Timer = $ReloadTimer
 @onready var shoot_timer: Timer = $FireRateTimer
@@ -61,6 +62,7 @@ func shoot_bullet() -> void:
 	var bullet_instance: Bullet = bullet_scene.instantiate()
 	bullet_instance.look_at(mouse_position)
 	bullet_instance.global_position = global_position
+	bullet_instance.extra_damage = extra_bullet_damage
 	get_tree().get_root().add_child(bullet_instance)
 	bullet_instance.hitbox_component.hit_source = get_parent()
 	audio_player.play()
@@ -78,10 +80,12 @@ func disable():
 	reload_timer.stop()
 
 func decrease_shoot_timer(percent: float):
-	shoot_timer.wait_time = shoot_timer.wait_time * (1.0-percent)
+	var new_time: float = shoot_timer.wait_time * 0.9
+	shoot_timer.wait_time = new_time
 
 func decrease_reload_timer(percent: float):
-	reload_timer.wait_time = reload_timer.wait_time * (1.0-percent)
+	var new_time: float = reload_timer.wait_time * 0.9
+	reload_timer.wait_time = new_time
 	
 func increase_ammo_capacity(amount: int):
 	ammo_capacity += amount

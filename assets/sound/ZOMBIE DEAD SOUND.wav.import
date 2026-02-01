@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://co8bvtp4axp2o"
+path="res://.godot/imported/ZOMBIE DEAD SOUND.wav-3e3bbae0a786d647367cf26404f9a2af.sample"
+
+[deps]
+
+source_file="res://assets/sound/ZOMBIE DEAD SOUND.wav"
+dest_files=["res://.godot/imported/ZOMBIE DEAD SOUND.wav-3e3bbae0a786d647367cf26404f9a2af.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

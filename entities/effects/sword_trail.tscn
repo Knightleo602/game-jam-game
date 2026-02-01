@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bhaqidujcw873"]
 
 [ext_resource type="Texture2D" uid="uid://44owhoqsv3j4" path="res://assets/effects/spr-corte.png" id="1_ariqr"]
+[ext_resource type="Script" uid="uid://dq4ofoq22hr3s" path="res://entities/effects/sword_trail.gd" id="1_ksom8"]
 [ext_resource type="PackedScene" uid="uid://1h1j3w4uclbl" path="res://entities/components/hitbox_component.tscn" id="1_tkt3s"]
-[ext_resource type="AudioStream" uid="uid://45vup500j2sc" path="res://assets/sound/Fireball.wav" id="3_oyrh4"]
-[ext_resource type="AudioStream" uid="uid://cp8v5txcmi1av" path="res://assets/sound/Sword2.wav" id="4_2njxc"]
+[ext_resource type="AudioStream" uid="uid://dfc08yko2i7th" path="res://assets/sound/SWORD 1.mp3.mp3" id="3_nq30o"]
+[ext_resource type="AudioStream" uid="uid://kwnr38qiq40y" path="res://assets/sound/SWORD 2.mp3.mp3" id="4_ksom8"]
+[ext_resource type="AudioStream" uid="uid://bajihdbcqc0t0" path="res://assets/sound/SWORD 3.mp3.mp3" id="5_hj78s"]
 
 [sub_resource type="Animation" id="Animation_ariqr"]
 length = 0.001
@@ -92,11 +94,13 @@ _data = {
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nq30o"]
 playback_mode = 1
-streams_count = 2
-stream_0/stream = ExtResource("3_oyrh4")
-stream_1/stream = ExtResource("4_2njxc")
+streams_count = 3
+stream_0/stream = ExtResource("3_nq30o")
+stream_1/stream = ExtResource("4_ksom8")
+stream_2/stream = ExtResource("5_hj78s")
 
 [node name="SwordTrail" type="Node2D" unique_id=385226643]
+script = ExtResource("1_ksom8")
 
 [node name="HitboxComponent" parent="." unique_id=962314165 instance=ExtResource("1_tkt3s")]
 position = Vector2(15.475, 0)

@@ -4,10 +4,13 @@ class_name Sword extends Node2D
 @onready var invert_direction_timer: Timer = $InvertDirectionTimer
 @export var sword_trail: PackedScene = preload("res://entities/effects/sword_trail.tscn")
 @export var enabled: bool = true
+@export var extra_sword_damage: int = 0
 
-var trail: Node2D
+
+var trail: SwordTrail
 var attacking: bool = false
 var invert_direction: bool = false
+var extra_damage: int = 0
 
 
 func _process(_delta: float) -> void:
@@ -33,6 +36,7 @@ func _get_cardinal_direction(mouse_pos: Vector2) -> Vector2:
 func _create_trail() -> void:
 	trail = sword_trail.instantiate()
 	add_child(trail)
+	trail.hitbox_component.damage += extra_sword_damage
 	if invert_direction:
 		trail.scale.y *= -1
 
@@ -64,4 +68,4 @@ func disable() -> void:
 	attack_timer.stop()
 	
 func decrease_atk_timer(percent: float):
-	attack_timer.wait_time = attack_timer.wait_time * (1-percent)
+	attack_timer.wait_time = 0.9

@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://1h1j3w4uclbl" path="res://entities/components/hitbox_component.tscn" id="5_ajdog"]
 [ext_resource type="AudioStream" uid="uid://dne2giil58hnw" path="res://assets/sound/Hit7.wav" id="10_0ec8b"]
 [ext_resource type="AudioStream" uid="uid://n1nkfwdeuemk" path="res://assets/sound/Hit.wav" id="11_dwqx1"]
+[ext_resource type="AudioStream" uid="uid://co8bvtp4axp2o" path="res://assets/sound/ZOMBIE DEAD SOUND.wav" id="13_ape0a"]
 [ext_resource type="Animation" uid="uid://c46qd3fn0qkp8" path="res://entities/effects/flash.res" id="13_vj30t"]
 
 [sub_resource type="Shader" id="Shader_dwqx1"]
@@ -152,5 +153,9 @@ volume_db = -15.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1363091060]
 libraries/ = SubResource("AnimationLibrary_4pphs")
 
+[node name="DeathSoundPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1866655470]
+stream = ExtResource("13_ape0a")
+
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="timeout" from="DeathDespawnTimer" to="." method="_on_death_despawn_timer_timeout"]
+[connection signal="finished" from="DeathSoundPlayer" to="." method="_on_death_sound_player_finished"]
