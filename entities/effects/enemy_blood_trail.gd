@@ -10,7 +10,8 @@ func _physics_process(delta: float) -> void:
 	var direction: Vector2 = _direction_to_target()
 	velocity_component.accelerate_towards(direction, delta)
 	velocity_component.set_global_position(self )
-	trail_line.global_position = global_position
+	# EU FIZ ISSO AQUI PRA TESTA, MAS NO FIM ESSA É A SOLUCAO ??????
+	trail_line.global_position = Vector2.ZERO
 
 
 func _direction_to_target() -> Vector2:
