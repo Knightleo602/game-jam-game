@@ -15,6 +15,10 @@ run/main_scene="uid://h4pa2c07dru1"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SfxDeconflicter="*uid://dwfid5fohsphs"
+
 [display]
 
 window/stretch/mode="canvas_items"

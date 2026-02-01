@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://44owhoqsv3j4" path="res://assets/effects/spr-corte.png" id="1_ariqr"]
 [ext_resource type="PackedScene" uid="uid://1h1j3w4uclbl" path="res://entities/components/hitbox_component.tscn" id="1_tkt3s"]
+[ext_resource type="AudioStream" uid="uid://45vup500j2sc" path="res://assets/sound/Fireball.wav" id="3_oyrh4"]
+[ext_resource type="AudioStream" uid="uid://cp8v5txcmi1av" path="res://assets/sound/Sword2.wav" id="4_2njxc"]
 
 [sub_resource type="Animation" id="Animation_ariqr"]
 length = 0.001
@@ -64,10 +66,10 @@ tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.09883498, 0.16666667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.16666667),
+"transitions": PackedFloat32Array(0.3186403, 3.0314324, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(37.91, 0), Vector2(0, 0)]
+"values": [Vector2(-20, -5.9604645e-07), Vector2(45, 0), Vector2(-20, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -87,6 +89,12 @@ _data = {
 &"RESET": SubResource("Animation_ariqr"),
 &"appear": SubResource("Animation_tkt3s")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nq30o"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("3_oyrh4")
+stream_1/stream = ExtResource("4_2njxc")
 
 [node name="SwordTrail" type="Node2D" unique_id=385226643]
 
@@ -112,3 +120,8 @@ polygon = PackedVector2Array(-11505564, -391484.63, -6320577, -5765116, -658716.
 libraries/ = SubResource("AnimationLibrary_oyrh4")
 autoplay = &"appear"
 movie_quit_on_finish = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=851775971]
+stream = SubResource("AudioStreamRandomizer_nq30o")
+volume_db = -15.0
+autoplay = true

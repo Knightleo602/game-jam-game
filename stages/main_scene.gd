@@ -3,6 +3,7 @@ extends Node2D
 @onready var path_follow: PathFollow2D = $Player/Camera/EnemySpawnPath/PathFollow2D
 @onready var spawn_position: Marker2D = $Player/Camera/EnemySpawnPath/PathFollow2D/Position2D
 @onready var camera: Camera = $Player/Camera
+@onready var player: Player = $Player
 
 @export var enemies: Array[PackedScene] = []
 
@@ -15,6 +16,8 @@ func _ready() -> void:
 
 
 func _on_enemy_spawn_timer_timeout() -> void:
+	if player.health_component.is_dead():
+		return
 	rng.randomize()
 	var enemy_index = rng.randi_range(0, enemies.size() - 1)
 	var enemy_instance: Node2D = enemies[enemy_index].instantiate()

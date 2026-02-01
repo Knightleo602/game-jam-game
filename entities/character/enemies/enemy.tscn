@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://mclab3abpbdk" path="res://entities/components/movement_component.tscn" id="4_dwqx1"]
 [ext_resource type="PackedScene" uid="uid://bjvcrr31ywf8q" path="res://entities/components/hurtbox_component.tscn" id="4_pp0wr"]
 [ext_resource type="PackedScene" uid="uid://1h1j3w4uclbl" path="res://entities/components/hitbox_component.tscn" id="5_ajdog"]
+[ext_resource type="AudioStream" uid="uid://dne2giil58hnw" path="res://assets/sound/Hit7.wav" id="10_0ec8b"]
+[ext_resource type="AudioStream" uid="uid://n1nkfwdeuemk" path="res://assets/sound/Hit.wav" id="11_dwqx1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrlt3"]
 atlas = ExtResource("3_ajdog")
@@ -30,6 +32,11 @@ size = Vector2(89, 99.75)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lrlt3"]
 radius = 14.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_vj30t"]
+streams_count = 2
+stream_0/stream = ExtResource("10_0ec8b")
+stream_1/stream = ExtResource("11_dwqx1")
 
 [node name="Enemy" type="CharacterBody2D" unique_id=961511005]
 collision_layer = 4
@@ -68,10 +75,11 @@ animation = &"idle"
 position = Vector2(5.5, 36.125)
 shape = SubResource("RectangleShape2D_pp0wr")
 
-[node name="HurtboxComponent" parent="." unique_id=553604298 node_paths=PackedStringArray("health_component") instance=ExtResource("4_pp0wr")]
+[node name="HurtboxComponent" parent="." unique_id=553604298 node_paths=PackedStringArray("health_component", "audio_player") instance=ExtResource("4_pp0wr")]
 collision_layer = 4
 collision_mask = 10
 health_component = NodePath("../HealthComponent")
+audio_player = NodePath("../AudioStreamPlayer2D")
 
 [node name="Node2D" type="CollisionPolygon2D" parent="HurtboxComponent" unique_id=844474461]
 polygon = PackedVector2Array(-45, 2, -43, -114, -3, -99, 41, -34, 53, 93, -39, 89)
@@ -93,6 +101,10 @@ debug_color = Color(0.81202555, 0.0021079343, 0.983723, 0.41960785)
 [node name="DeathDespawnTimer" type="Timer" parent="." unique_id=475116343]
 wait_time = 10.0
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1450021813]
+stream = SubResource("AudioStreamRandomizer_vj30t")
+volume_db = -15.0
 
 [connection signal="died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="timeout" from="DeathDespawnTimer" to="." method="_on_death_despawn_timer_timeout"]
