@@ -20,8 +20,6 @@ func take_damage(amount: int) -> void:
 	var new_health = max(health - __subtract_damage(amount), 0)
 	health_changed.emit(new_health, health)
 	health = new_health
-	if debug_mode:
-		print(owner.name, " took ", amount, " damage and now has ", health, " health.")
 	if health == 0:
 		died.emit()
 
@@ -31,8 +29,6 @@ func heal(amount: int) -> void:
 	var new_health = min(health + amount, max_health)
 	health_changed.emit(new_health, health)
 	health = new_health
-	if debug_mode:
-		print(owner.name, " healed ", amount, " and now has ", health, " health.")
 
 func is_dead() -> bool:
 	return health <= 0

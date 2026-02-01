@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bsfv6wukonhes"]
+
+[ext_resource type="Script" uid="uid://s2u3hi3rxlg7" path="res://entities/character/weapon/sword/sword.gd" id="1_uu0vm"]
+
+[node name="Sword" type="Node2D" unique_id=836343902]
+script = ExtResource("1_uu0vm")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=722545227]
+wait_time = 0.3
+one_shot = true
+
+[node name="InvertDirectionTimer" type="Timer" parent="." unique_id=942481800]
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="InvertDirectionTimer" to="." method="_on_invert_direction_timer_timeout"]
