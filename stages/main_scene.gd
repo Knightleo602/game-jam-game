@@ -27,7 +27,6 @@ func _on_enemy_spawn_timer_timeout() -> void:
 	enemy_instance.global_position = spawn_position.global_position
 	enemy_instance.player = player
 
-
 func _on_player_player_health_changed(new_health: int, old_health: int, _max_health: int) -> void:
 	if new_health < old_health:
 		camera.shake_camera()
