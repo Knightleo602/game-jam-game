@@ -8,6 +8,7 @@ signal player_health_changed(new_health: int, old_health: int, max_health: int)
 @onready var movement_component: MovementComponent = $MovementComponent
 @onready var gun: Gun = $AnimatedSprite2D/Gun
 @onready var sword: Sword = $AnimatedSprite2D/Sword
+@onready var death_audio_player: AudioStreamPlayer2D = $DeathAudioPlayer
 
 # Sinais de Experiência (Novos)
 # Envia: XP atual, XP necessário para o próx nível e a % (0.0 a 1.0)
@@ -33,10 +34,12 @@ func _physics_process(delta: float) -> void:
 	var input = _get_input()
 	movement_component.move(self , input, delta)
 
+
 func _ready() -> void:
 	GameManager.experience_gained.connect(_on_xp_gained)
 	HudManager.upgrade_aplicado.connect(_on_upgraded)
 	update_xp_ui()
+
 
 func _process(_delta: float) -> void:
 	if health_component.is_dead():
@@ -50,6 +53,7 @@ func _on_death() -> void:
 	sword.disable()
 	movement_component.animated_sprite.stop()
 	print("Player has died.")
+	death_audio_player.play()
 	$AnimatedSprite2D.play("death")
 	GameManager.notify_player_died(level_up_xp)
 
@@ -102,7 +106,9 @@ func _on_upgraded(upgrade: UpgradeData):
 		"health":
 			health_component.heal(intAmount)
 		"atkPower":
-			pass
+			var amount: int = intAmount * 0.6
+			gun.extra_bullet_damage += amount
+			sword.extra_sword_damage += amount
 		"atkSpeed":
 			sword.decrease_atk_timer(upgrade.value_modifier)
 		"moveSpeed":

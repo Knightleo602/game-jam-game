@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://kwnr38qiq40y"
+path="res://.godot/imported/SWORD 2.mp3.mp3-987475e11ce66f4a85c634e3d0650c72.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/SWORD 2.mp3.mp3"
+dest_files=["res://.godot/imported/SWORD 2.mp3.mp3-987475e11ce66f4a85c634e3d0650c72.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

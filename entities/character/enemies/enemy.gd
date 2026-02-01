@@ -15,6 +15,7 @@ signal died(exp: int, score_on_death: int)
 @onready var death_despawn_timer: Timer = $DeathDespawnTimer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var flash_animator: AnimationPlayer = $AnimationPlayer
+@onready var death_audio_player: AudioStreamPlayer2D = $DeathSoundPlayer
 
 var random_movement: Vector2 = Vector2.ZERO
 
@@ -37,10 +38,8 @@ func _on_health_component_died() -> void:
 	disable()
 	GameManager.notify_enemy_death($".")
 	died.emit(exp_on_death, score_on_death)
-	# enquanto nao tem animacao de morte
-	queue_free()
-	#death_despawn_timer.start()
-	#animated_sprite.play("death")
+	death_audio_player.play()
+	animated_sprite.queue_free()
 
 func disable() -> void:
 	hurtbox_component.queue_free()
@@ -49,3 +48,10 @@ func disable() -> void:
 
 func _on_hurtbox_component_hit_taken(_hit_box: HitboxComponent) -> void:
 	flash_animator.play("flash")
+
+
+func _on_death_sound_player_finished() -> void:
+	# enquanto nao tem animacao de morte
+	queue_free()
+	#death_despawn_timer.start()
+	#animated_sprite.play("death")

@@ -38,11 +38,11 @@ func move(character: CharacterBody2D, direction: Vector2, delta: float = get_phy
 
 
 func animate_movement():
-	if velocity_component.velocity.x > 0:
+	if velocity_component.velocity.x > 10:
 		# animated_sprite.play(anim_walk_horizontal)
 		animated_sprite.scale.x = -1
 		animated_sprite.play("walk")
-	elif velocity_component.velocity.x < 0:
+	elif velocity_component.velocity.x < -10:
 		# animated_sprite.play(anim_walk_horizontal)
 		animated_sprite.scale.x = 1
 		animated_sprite.play("walk")
@@ -51,7 +51,6 @@ func animate_movement():
 	# elif velocity_component.velocity.y < 0:
 	 	# animated_sprite.play(anim_walk_up)
 	else:
-		animated_sprite.stop()
 		animated_sprite.play(anim_idle)
 
 

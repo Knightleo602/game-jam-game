@@ -9,11 +9,14 @@ class_name Bullet extends Node2D
 
 var trail_instance: Trail = null
 
+var extra_damage = 0
+
 func _ready() -> void:
 	if trail:
 		trail_instance = preload("res://entities/effects/trail.tscn").instantiate()
 		add_child(trail_instance)
 	velocity_component.velocity = Vector2(speed, 0).rotated(rotation)
+	hitbox_component.damage += extra_damage
 
 func _physics_process(delta: float) -> void:
 	velocity_component.decelerate(delta)
