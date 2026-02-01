@@ -36,7 +36,7 @@ func _on_death_despawn_timer_timeout() -> void:
 
 
 func _on_health_component_died() -> void:
-	# create_trail_effect()
+	create_trail_effect()
 	disable()
 	GameManager.notify_enemy_death($".")
 	died.emit(exp_on_death, score_on_death)
@@ -54,8 +54,9 @@ func create_trail_effect() -> void:
 	print("Creating enemy blood trail effect.")
 	var trail: EnemyBloodTrail = enemy_blood_trail_scene.instantiate()
 	trail.target = player
-	add_child(trail)
 	trail.global_position = global_position
+	call_deferred("add_child", trail)
+	trail.set_deferred("global_position", global_position)
 
 
 func _on_death_sound_player_finished() -> void:

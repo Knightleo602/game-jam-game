@@ -59,6 +59,7 @@ func _on_attack_timer_timeout() -> void:
 func _on_invert_direction_timer_timeout() -> void:
 	invert_direction = false
 
+
 func disable() -> void:
 	enabled = false
 	attacking = false
@@ -66,6 +67,7 @@ func disable() -> void:
 		trail.queue_free()
 	trail = null
 	attack_timer.stop()
+	
 	
 func decrease_atk_timer(percent: float):
 	attack_timer.wait_time = attack_timer.wait_time * 0.9

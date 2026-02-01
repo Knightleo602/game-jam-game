@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dk2626lfapnm1" path="res://entities/components/velocity_component.gd" id="2_846sm"]
 
 [sub_resource type="Curve" id="Curve_qwxiy"]
-_data = [Vector2(0, 0.27479345), 0.0, 0.0, 0, 0, Vector2(0.19256018, 1), 0.0, 0.0, 0, 0, Vector2(0.3632385, 0.36611575), 0.0, 0.0, 0, 0, Vector2(0.48140046, 1), 0.0, 0.0, 0, 0, Vector2(0.6608315, 0.35537195), -0.6294766, -0.6294766, 0, 0, Vector2(0.8599562, 0.75826454), 0.0, 0.0, 0, 0, Vector2(1, 0.2210744), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.27479345), 0.0, 0.0, 0, 0, Vector2(0.17724289, 0.5756199), 0.0, 0.0, 0, 0, Vector2(0.3632385, 0.36611575), 0.0, 0.0, 0, 0, Vector2(0.49671772, 0.5809918), 0.0, 0.0, 0, 0, Vector2(0.6608315, 0.35537195), -0.6294766, -0.6294766, 0, 0, Vector2(0.8380744, 0.48966944), 0.0, 0.0, 0, 0, Vector2(1, 0.2210744), 0.0, 0.0, 0, 0]
 point_count = 7
 
 [sub_resource type="Gradient" id="Gradient_846sm"]
@@ -20,12 +20,14 @@ script = ExtResource("1_21wok")
 
 [node name="VelocityComponent" type="Node" parent="." unique_id=2064872768]
 script = ExtResource("2_846sm")
+max_speed = 133
 acceleration = 1.0
 metadata/_custom_type_script = "uid://dk2626lfapnm1"
 
 [node name="EnemyBloodTrail" type="Line2D" parent="." unique_id=1849208942]
 z_index = -2
-width = 6.52
+points = PackedVector2Array(-7, -4)
+width = 21.615
 width_curve = SubResource("Curve_qwxiy")
 gradient = SubResource("Gradient_846sm")
 joint_mode = 2
