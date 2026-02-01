@@ -7,16 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cdsork0fui4y6" path="res://entities/character/enemies/enemy.tscn" id="5_7rt5u"]
 [ext_resource type="PackedScene" uid="uid://ccpbqu2hqer7g" path="res://entities/components/velocity_component.tscn" id="6_3rkkq"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_uui7f"]
-load_path = "res://.godot/imported/spr-mascara-linhas.png-77490ba8a216c9f406eaa55083fc8847.ctex"
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3rkkq"]
-texture = SubResource("CompressedTexture2D_uui7f")
-6:17/0 = 0
-9:17/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_jau11"]
-sources/0 = SubResource("TileSetAtlasSource_3rkkq")
 [sub_resource type="Curve2D" id="Curve2D_7rt5u"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1907, -425, 0, 0, 0, 0, 1919, 1063, 0, 0, 0, 0, -658, 1066, 0, 0, 0, 0, -658, -425, 0, 0, 0, 0, 1907, -425)
