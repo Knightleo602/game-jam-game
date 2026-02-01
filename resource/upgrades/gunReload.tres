@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://i0l14hbj0gn5"]
+
+[ext_resource type="Texture2D" uid="uid://nk4o5ni87p7j" path="res://assets/character/upgrades/gun_reload-r.png" id="1_7vm4y"]
+[ext_resource type="Script" uid="uid://dxw8o01m7ksjq" path="res://ui/scripts/UpgradeData.gd" id="2_7rndn"]
+
+[resource]
+script = ExtResource("2_7rndn")
+icon = ExtResource("1_7vm4y")
+title = "Vento"
+description = "+ 15% na Recarga de munições"
+attribute_name = "gunReload"
+value_modifier = 15.0
+metadata/_custom_type_script = "uid://dxw8o01m7ksjq"

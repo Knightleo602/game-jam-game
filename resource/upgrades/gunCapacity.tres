@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://cc04j3s6j41o0"]
+
+[ext_resource type="Texture2D" uid="uid://dal8x0fy38fig" path="res://assets/character/upgrades/ammo_capacity-r.png" id="1_t8e0j"]
+[ext_resource type="Script" uid="uid://dxw8o01m7ksjq" path="res://ui/scripts/UpgradeData.gd" id="2_dyfm8"]
+
+[resource]
+script = ExtResource("2_dyfm8")
+icon = ExtResource("1_t8e0j")
+title = "Cartucho"
+description = "+ 5 Munições por recarga"
+attribute_name = "gunCapacity"
+value_modifier = 5.0
+metadata/_custom_type_script = "uid://dxw8o01m7ksjq"

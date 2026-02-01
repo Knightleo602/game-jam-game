@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://bbxfth56vsme1"]
+
+[ext_resource type="Texture2D" uid="uid://dp2611wmwh36m" path="res://assets/character/upgrades/boot.png" id="1_xcnfr"]
+[ext_resource type="Script" uid="uid://dxw8o01m7ksjq" path="res://ui/scripts/UpgradeData.gd" id="2_waxyn"]
+
+[resource]
+script = ExtResource("2_waxyn")
+icon = ExtResource("1_xcnfr")
+title = "Vento"
+description = "+ 10% de Velocidade de movimento"
+attribute_name = "moveSpeed"
+metadata/_custom_type_script = "uid://dxw8o01m7ksjq"

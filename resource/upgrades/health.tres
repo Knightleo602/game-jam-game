@@ -6,7 +6,8 @@
 [resource]
 script = ExtResource("2_a1md2")
 icon = ExtResource("1_qur55")
-title = "Garra"
-description = "+ 10 de Vida Maxima"
-attribute_name = "maxHealth"
+title = "Medkit"
+description = "+ 50 de Vida"
+attribute_name = "health"
+value_modifier = 50.0
 metadata/_custom_type_script = "uid://dxw8o01m7ksjq"

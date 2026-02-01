@@ -29,6 +29,10 @@ func heal(amount: int) -> void:
 	var new_health = min(health + amount, max_health)
 	health_changed.emit(new_health, health)
 	health = new_health
+	
+func increase_max_health(amount: int) -> void:
+	max_health += amount
+	heal(amount)
 
 func is_dead() -> bool:
 	return health <= 0

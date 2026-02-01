@@ -14,7 +14,9 @@ stream_2/stream = ExtResource("4_y3o73")
 
 [node name="Gun" type="Node2D" unique_id=1984785067]
 script = ExtResource("1_rb21p")
-fire_rate = 0.1
+ammo_capacity = 5
+reload_time = 3.0
+fire_rate = 0.6
 
 [node name="FireRateTimer" type="Timer" parent="." unique_id=1561355225]
 

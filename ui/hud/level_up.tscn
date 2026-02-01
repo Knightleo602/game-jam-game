@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://dxw8o01m7ksjq" path="res://ui/scripts/UpgradeData.gd" id="2_tnec1"]
 [ext_resource type="Resource" uid="uid://ckjl1jams4hd0" path="res://resource/upgrades/health.tres" id="3_3lcpv"]
 [ext_resource type="PackedScene" uid="uid://c3bg1b1evi10w" path="res://ui/hud/mask.tscn" id="3_bxtg7"]
-[ext_resource type="Resource" uid="uid://x7fca8ninf8v" path="res://resource/upgrades/powerAtk.tres" id="4_rjlov"]
-[ext_resource type="Resource" uid="uid://d30ok7b8pmv6t" path="res://resource/upgrades/speedAtk.tres" id="5_22rns"]
+[ext_resource type="Resource" uid="uid://x7fca8ninf8v" path="res://resource/upgrades/atkPower.tres" id="4_rjlov"]
+[ext_resource type="Resource" uid="uid://d30ok7b8pmv6t" path="res://resource/upgrades/atkSpeed.tres" id="5_22rns"]
 
 [node name="LevelUp" type="Control" unique_id=646394916]
 layout_mode = 3

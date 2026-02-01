@@ -4,7 +4,16 @@
 [ext_resource type="Texture2D" uid="uid://bkat28avgc4rm" path="res://assets/hud/spr-mascara-cores-original.png" id="2_o2lis"]
 [ext_resource type="Texture2D" uid="uid://d4j3ew0ayaq08" path="res://assets/hud/spr-mascara-cores-vermelho.png" id="4_aixkq"]
 [ext_resource type="Texture2D" uid="uid://calvwti5qb78n" path="res://assets/hud/blood.png" id="5_cxhb7"]
+[ext_resource type="Script" uid="uid://dxw8o01m7ksjq" path="res://ui/scripts/UpgradeData.gd" id="6_5uuaq"]
 [ext_resource type="PackedScene" uid="uid://d3u4ohf138uko" path="res://ui/hud/level_up.tscn" id="7_o2lis"]
+[ext_resource type="Resource" uid="uid://x7fca8ninf8v" path="res://resource/upgrades/atkPower.tres" id="7_p3vm3"]
+[ext_resource type="Resource" uid="uid://d30ok7b8pmv6t" path="res://resource/upgrades/atkSpeed.tres" id="8_gv4gi"]
+[ext_resource type="Resource" uid="uid://cc04j3s6j41o0" path="res://resource/upgrades/gunCapacity.tres" id="9_3mxrk"]
+[ext_resource type="Resource" uid="uid://ckjl1jams4hd0" path="res://resource/upgrades/health.tres" id="9_5mn0o"]
+[ext_resource type="Resource" uid="uid://ddaf3fg7a6kok" path="res://resource/upgrades/maxHealth.tres" id="10_3mxrk"]
+[ext_resource type="Resource" uid="uid://eyj1oc0e7qig" path="res://resource/upgrades/gunFireRate.tres" id="10_6gxmt"]
+[ext_resource type="Resource" uid="uid://bbxfth56vsme1" path="res://resource/upgrades/moveSpeed.tres" id="11_6gxmt"]
+[ext_resource type="Resource" uid="uid://i0l14hbj0gn5" path="res://resource/upgrades/gunReload.tres" id="11_olkg6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kwc50"]
 load_path = "res://.godot/imported/spr-mascara-quebrando90.png-c7e7318c4fbf1f46f556c622b8bffe6b.ctex"
@@ -63,3 +72,4 @@ offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="LevelUp" parent="." unique_id=790107918 instance=ExtResource("7_o2lis")]
+available_upgrades = Array[ExtResource("6_5uuaq")]([ExtResource("7_p3vm3"), ExtResource("8_gv4gi"), ExtResource("9_3mxrk"), ExtResource("10_6gxmt"), ExtResource("11_olkg6"), ExtResource("9_5mn0o"), ExtResource("10_3mxrk"), ExtResource("11_6gxmt")])

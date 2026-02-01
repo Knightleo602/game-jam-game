@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://ddaf3fg7a6kok"]
+
+[ext_resource type="Texture2D" uid="uid://dfnqaxn3sj18" path="res://assets/character/upgrades/medicalBag.png" id="1_lx5k6"]
+[ext_resource type="Script" uid="uid://dxw8o01m7ksjq" path="res://ui/scripts/UpgradeData.gd" id="2_mk2db"]
+
+[resource]
+script = ExtResource("2_mk2db")
+icon = ExtResource("1_lx5k6")
+title = "Medkit"
+description = "+ 25 de Vida Maxima"
+attribute_name = "maxHealth"
+value_modifier = 25.0
+metadata/_custom_type_script = "uid://dxw8o01m7ksjq"

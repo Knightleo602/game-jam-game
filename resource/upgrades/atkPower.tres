@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://x7fca8ninf8v"]
+
+[ext_resource type="Texture2D" uid="uid://cou81rkhhhemv" path="res://assets/character/upgrades/garra.png" id="1_j2b83"]
+[ext_resource type="Script" uid="uid://dxw8o01m7ksjq" path="res://ui/scripts/UpgradeData.gd" id="2_t3mh4"]
+
+[resource]
+script = ExtResource("2_t3mh4")
+icon = ExtResource("1_j2b83")
+title = "Garra"
+description = "+ 5 de Dano de Ataque"
+attribute_name = "atkPower"
+value_modifier = 5.0
+metadata/_custom_type_script = "uid://dxw8o01m7ksjq"
