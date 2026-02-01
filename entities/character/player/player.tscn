@@ -169,9 +169,10 @@ hurtbox_component = NodePath("../HurtboxComponent")
 animated_sprite = NodePath("../AnimatedSprite2D")
 knockback_component = NodePath("../KnockbackComponent")
 
-[node name="Hud" parent="." unique_id=1615795096 node_paths=PackedStringArray("healthComponent") instance=ExtResource("12_cr6xo")]
-health_textures = Array[Texture2D]([ExtResource("13_mpvsy"), ExtResource("14_bcvuw"), ExtResource("15_rrb68"), ExtResource("16_yjhn8"), ExtResource("17_ykxus"), ExtResource("18_qey6t"), ExtResource("19_qqn07"), ExtResource("20_djqyg"), ExtResource("21_gj0h6"), ExtResource("17_mpvsy")])
+[node name="Hud" parent="." unique_id=1615795096 node_paths=PackedStringArray("player", "healthComponent") instance=ExtResource("12_cr6xo")]
+player = NodePath("..")
 healthComponent = NodePath("../HealthComponent")
+health_textures = Array[Texture2D]([ExtResource("13_mpvsy"), ExtResource("14_bcvuw"), ExtResource("15_rrb68"), ExtResource("16_yjhn8"), ExtResource("17_ykxus"), ExtResource("18_qey6t"), ExtResource("19_qqn07"), ExtResource("20_djqyg"), ExtResource("21_gj0h6"), ExtResource("17_mpvsy")])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=137848723]
 stream = SubResource("AudioStreamRandomizer_1h0c8")

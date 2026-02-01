@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 HudManager="*uid://qpqs6ae4ji71"
 SfxDeconflicter="*uid://dwfid5fohsphs"
+GameManager="*uid://bj866q10qvdmb"
 
 [display]
 

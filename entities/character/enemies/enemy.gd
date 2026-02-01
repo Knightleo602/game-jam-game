@@ -30,6 +30,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_death_despawn_timer_timeout() -> void:
+	GameManager.notify_enemy_death(exp_on_death)
 	queue_free()
 
 
