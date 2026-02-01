@@ -35,7 +35,7 @@ func _on_death_despawn_timer_timeout() -> void:
 
 func _on_health_component_died() -> void:
 	disable()
-	GameManager.notify_enemy_death(exp_on_death)
+	GameManager.notify_enemy_death($".")
 	died.emit(exp_on_death, score_on_death)
 	# enquanto nao tem animacao de morte
 	queue_free()

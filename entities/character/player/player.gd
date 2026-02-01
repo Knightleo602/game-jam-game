@@ -35,6 +35,7 @@ func _physics_process(delta: float) -> void:
 
 func _ready() -> void:
 	GameManager.experience_gained.connect(_on_xp_gained)
+	HudManager.upgrade_aplicado.connect(_on_upgraded)
 	update_xp_ui()
 
 func _process(_delta: float) -> void:
@@ -91,3 +92,24 @@ func update_xp_ui():
 	
 	# Emite o sinal para a HUD
 	xp_changed.emit(current_xp, level_up_xp, percentage)
+
+func _on_upgraded(upgrade: UpgradeData):
+	var intAmount = int(upgrade.value_modifier)
+	
+	match upgrade.attribute_name:
+		"maxHealth":
+			health_component.increase_max_health(intAmount)
+		"health":
+			health_component.heal(intAmount)
+		"atkPower":
+			pass
+		"atkSpeed":
+			sword.decrease_atk_timer(upgrade.value_modifier)
+		"moveSpeed":
+			velocity_component.increase_speed(intAmount)
+		"gunCapacity":
+			gun.increase_ammo_capacity(intAmount)
+		"gunAtkSpeed":
+			gun.decrease_shoot_timer(upgrade.value_modifier)
+		"gunReload":
+			gun.decrease_reload_timer(upgrade.value_modifier)

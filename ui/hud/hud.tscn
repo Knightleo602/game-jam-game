@@ -4,7 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://bkat28avgc4rm" path="res://assets/hud/spr-mascara-cores-original.png" id="2_o2lis"]
 [ext_resource type="Texture2D" uid="uid://d4j3ew0ayaq08" path="res://assets/hud/spr-mascara-cores-vermelho.png" id="4_aixkq"]
 [ext_resource type="Texture2D" uid="uid://calvwti5qb78n" path="res://assets/hud/blood.png" id="5_cxhb7"]
+[ext_resource type="Script" uid="uid://dxw8o01m7ksjq" path="res://ui/scripts/UpgradeData.gd" id="6_5uuaq"]
 [ext_resource type="PackedScene" uid="uid://d3u4ohf138uko" path="res://ui/hud/level_up.tscn" id="7_o2lis"]
+[ext_resource type="Resource" uid="uid://d30ok7b8pmv6t" path="res://resource/upgrades/atkSpeed.tres" id="8_gv4gi"]
+[ext_resource type="Resource" uid="uid://cc04j3s6j41o0" path="res://resource/upgrades/gunCapacity.tres" id="9_3mxrk"]
+[ext_resource type="Resource" uid="uid://ckjl1jams4hd0" path="res://resource/upgrades/health.tres" id="9_5mn0o"]
+[ext_resource type="Resource" uid="uid://ddaf3fg7a6kok" path="res://resource/upgrades/maxHealth.tres" id="10_3mxrk"]
+[ext_resource type="Resource" uid="uid://eyj1oc0e7qig" path="res://resource/upgrades/gunFireRate.tres" id="10_6gxmt"]
+[ext_resource type="Resource" uid="uid://bbxfth56vsme1" path="res://resource/upgrades/moveSpeed.tres" id="11_6gxmt"]
+[ext_resource type="Resource" uid="uid://i0l14hbj0gn5" path="res://resource/upgrades/gunReload.tres" id="11_olkg6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kwc50"]
 load_path = "res://.godot/imported/spr-mascara-quebrando90.png-c7e7318c4fbf1f46f556c622b8bffe6b.ctex"
@@ -31,7 +39,7 @@ texture_under = ExtResource("2_o2lis")
 texture_over = SubResource("CompressedTexture2D_kwc50")
 texture_progress = ExtResource("4_aixkq")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1847236265]
+[node name="Score" type="MarginContainer" parent="." unique_id=1847236265]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -43,19 +51,19 @@ scale = Vector2(0.8, 0.8)
 pivot_offset_ratio = Vector2(0.5, 0)
 theme_override_constants/margin_top = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1927432893]
+[node name="HBoxContainer" type="HBoxContainer" parent="Score" unique_id=1927432893]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1551969743]
+[node name="TextureRect" type="TextureRect" parent="Score/HBoxContainer" unique_id=1551969743]
 layout_mode = 2
 texture = ExtResource("5_cxhb7")
 expand_mode = 3
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=2071961273]
+[node name="Label" type="Label" parent="Score/HBoxContainer" unique_id=2071961273]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "1000"
+text = "0"
 
 [node name="MouseItem" type="TextureRect" parent="." unique_id=1812516078]
 offset_right = 40.0
@@ -63,3 +71,4 @@ offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="LevelUp" parent="." unique_id=790107918 instance=ExtResource("7_o2lis")]
+available_upgrades = Array[ExtResource("6_5uuaq")]([ExtResource("8_gv4gi"), ExtResource("9_3mxrk"), ExtResource("10_6gxmt"), ExtResource("11_olkg6"), ExtResource("9_5mn0o"), ExtResource("10_3mxrk"), ExtResource("11_6gxmt")])

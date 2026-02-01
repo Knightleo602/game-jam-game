@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dld2h07b5m84u" path="res://entities/character/weapon/gun/gun.tscn" id="3_l8lo3"]
 [ext_resource type="Texture2D" uid="uid://dmwfumo3ud3b1" path="res://assets/character/player/spr-player-idle-strip06.png" id="3_q0c0e"]
 [ext_resource type="PackedScene" uid="uid://dhathox3teks3" path="res://entities/components/health_component.tscn" id="3_rlso7"]
+[ext_resource type="Texture2D" uid="uid://bvn3344jdakos" path="res://assets/character/player/spr-player-walk-strip04.png" id="4_mpvsy"]
 [ext_resource type="PackedScene" uid="uid://mclab3abpbdk" path="res://entities/components/movement_component.tscn" id="5_mbi5q"]
 [ext_resource type="PackedScene" uid="uid://slojcui6rutk" path="res://entities/components/knockback_component.tscn" id="6_2oupo"]
 [ext_resource type="Script" uid="uid://dk2626lfapnm1" path="res://entities/components/velocity_component.gd" id="7_210l5"]
@@ -31,6 +32,10 @@ shader = ExtResource("2_1h0c8")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cih3"]
+atlas = ExtResource("3_q0c0e")
+region = Rect2(1352, 0, 338, 286)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_na8bb"]
 atlas = ExtResource("3_q0c0e")
 region = Rect2(0, 0, 338, 286)
@@ -47,17 +52,32 @@ region = Rect2(676, 0, 338, 286)
 atlas = ExtResource("3_q0c0e")
 region = Rect2(1014, 0, 338, 286)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8cih3"]
-atlas = ExtResource("3_q0c0e")
-region = Rect2(1352, 0, 338, 286)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_0lxd0"]
 atlas = ExtResource("3_q0c0e")
 region = Rect2(1690, 0, 338, 286)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcvuw"]
+atlas = ExtResource("4_mpvsy")
+region = Rect2(0, 0, 339, 286)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrb68"]
+atlas = ExtResource("4_mpvsy")
+region = Rect2(339, 0, 339, 286)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjhn8"]
+atlas = ExtResource("4_mpvsy")
+region = Rect2(678, 0, 339, 286)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykxus"]
+atlas = ExtResource("4_mpvsy")
+region = Rect2(1017, 0, 339, 286)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_2oupo"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cih3")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_na8bb")
 }, {
@@ -71,13 +91,27 @@ animations = [{
 "texture": SubResource("AtlasTexture_1h0c8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8cih3")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_0lxd0")
 }],
 "loop": true,
 "name": &"idle",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcvuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrb68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjhn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykxus")
+}],
+"loop": true,
+"name": &"walk",
 "speed": 14.0
 }]
 
@@ -125,7 +159,7 @@ position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_2oupo")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.25431708
+frame_progress = 0.7747154
 offset = Vector2(60.57, -11.575)
 
 [node name="Sword" parent="AnimatedSprite2D" unique_id=836343902 instance=ExtResource("2_q0c0e")]

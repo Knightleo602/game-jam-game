@@ -12,6 +12,7 @@ extends Node2D
 
 func _ready() -> void:
 	$GameOverMenu.visible = false
+	$PauseMenu.visible = false
 	assert(enemies.size() > 0, "No enemy scenes assigned to MainScene!")
 	$FadeTransicions/AnimationPlayer.play("fade_out")
 	$Timer.start()

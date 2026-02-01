@@ -62,3 +62,6 @@ func disable() -> void:
 		trail.queue_free()
 	trail = null
 	attack_timer.stop()
+	
+func decrease_atk_timer(percent: float):
+	attack_timer.wait_time = attack_timer.wait_time * (1-percent)

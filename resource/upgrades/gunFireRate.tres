@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://eyj1oc0e7qig"]
+
+[ext_resource type="Texture2D" uid="uid://ck7rxd7bi70sm" path="res://assets/character/upgrades/gun_fire_r.png" id="1_7ktdh"]
+[ext_resource type="Script" uid="uid://dxw8o01m7ksjq" path="res://ui/scripts/UpgradeData.gd" id="2_db80v"]
+
+[resource]
+script = ExtResource("2_db80v")
+icon = ExtResource("1_7ktdh")
+title = "Gatilho rápido"
+description = "+ 10% de Velocidade de Ataque"
+attribute_name = "gunAtkSpeed"
+metadata/_custom_type_script = "uid://dxw8o01m7ksjq"

@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cdsork0fui4y6" path="res://entities/character/enemies/enemy.tscn" id="5_7rt5u"]
 [ext_resource type="PackedScene" uid="uid://ccpbqu2hqer7g" path="res://entities/components/velocity_component.tscn" id="6_3rkkq"]
 [ext_resource type="PackedScene" uid="uid://clq4jg4gw8d8y" path="res://ui/game_over_menu.tscn" id="6_jau11"]
+[ext_resource type="PackedScene" uid="uid://bva0ek84oqlme" path="res://ui/pause_menu.tscn" id="8_6dvhh"]
 
 [sub_resource type="Curve2D" id="Curve2D_7rt5u"]
 _data = {
@@ -66,6 +67,10 @@ offset_right = 2143.0
 offset_bottom = 1388.0
 
 [node name="GameOverMenu" parent="." unique_id=546047650 instance=ExtResource("6_jau11")]
+
+[node name="PauseMenu" parent="." unique_id=1277643582 instance=ExtResource("8_6dvhh")]
+z_as_relative = false
+position = Vector2(300, -45)
 
 [node name="Timer" type="Timer" parent="." unique_id=1825071916]
 one_shot = true

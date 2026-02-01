@@ -4,7 +4,7 @@ signal ammo_changed(new_ammo: int, max_ammo: int)
 
 @export var bullet_scene: PackedScene = preload("res://entities/character/weapon/bullet/bullet.tscn")
 @export var no_ammo_sound: AudioStreamPlayer2D
-@export var ammo_capacity: int = 15
+@export var ammo_capacity: int = 5
 @export var reload_time: float = 0.4
 @export var fire_rate: float = 0.5
 @export var enabled: bool = true
@@ -13,12 +13,11 @@ signal ammo_changed(new_ammo: int, max_ammo: int)
 @onready var shoot_timer: Timer = $FireRateTimer
 @onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
-var current_ammo: int = ammo_capacity
+var current_ammo: int = 5
 
 func _ready() -> void:
 	reload_timer.wait_time = reload_time
 	shoot_timer.wait_time = fire_rate
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not enabled:
@@ -77,3 +76,13 @@ func disable():
 	enabled = false
 	shoot_timer.stop()
 	reload_timer.stop()
+
+func decrease_shoot_timer(percent: float):
+	shoot_timer.wait_time = shoot_timer.wait_time * (1.0-percent)
+
+func decrease_reload_timer(percent: float):
+	reload_timer.wait_time = reload_timer.wait_time * (1.0-percent)
+	
+func increase_ammo_capacity(amount: int):
+	ammo_capacity += amount
+	current_ammo += amount
