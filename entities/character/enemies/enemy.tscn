@@ -74,7 +74,6 @@ debug_color = Color(0, 0.6511708, 0.060456805, 0.41960785)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("5_pp0wr")
-damage = 1
 metadata/_custom_type_script = "uid://b1hhr2qu4i8uj"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent" unique_id=1443530010]

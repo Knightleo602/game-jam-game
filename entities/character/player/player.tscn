@@ -6,11 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://yuvu327h1se5" path="res://assets/character/player/spr-player-placeholder.png" id="2_mbi5q"]
 [ext_resource type="PackedScene" uid="uid://dhathox3teks3" path="res://entities/components/health_component.tscn" id="3_rlso7"]
 [ext_resource type="PackedScene" uid="uid://mclab3abpbdk" path="res://entities/components/movement_component.tscn" id="5_mbi5q"]
-[ext_resource type="Texture2D" uid="uid://ctx2snu51fjdh" path="res://assets/hud/spr-mascara-linhas.png" id="7_jko58"]
-[ext_resource type="Texture2D" uid="uid://dl7ebjbanrxts" path="res://assets/hud/spr-mascara-preenchimento.png" id="8_42idl"]
-[ext_resource type="Script" uid="uid://bolpgv54n4dfh" path="res://ui/hud/texture_progress_bar.gd" id="9_7wker"]
-[ext_resource type="Texture2D" uid="uid://cv1mi5f07x8wu" path="res://assets/hud/spr-mascara-linhas-2.png" id="10_7wker"]
-[ext_resource type="Texture2D" uid="uid://bsbyswc5jnogs" path="res://assets/hud/spr-mascara-linhas-3.png" id="11_5hl2u"]
+[ext_resource type="PackedScene" uid="uid://bqxevjcnv8vvf" path="res://ui/hud/hud.tscn" id="7_210l5"]
+[ext_resource type="Texture2D" uid="uid://di2s6cl2rhpu" path="res://assets/hud/mask/spr-mascara-linha-100.png" id="17_mpvsy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2oupo"]
 atlas = ExtResource("2_mbi5q")
@@ -32,6 +29,33 @@ size = Vector2(89, 135)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bmyq4"]
 size = Vector2(68, 124)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_210l5"]
+load_path = "res://.godot/imported/spr-mascara-quebrando10.png-aac676ce55f29b17397013ec1fced610.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jko58"]
+load_path = "res://.godot/imported/spr-mascara-quebrando20.png-190d66a3f028575d7d814ed7bc2bb114.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_42idl"]
+load_path = "res://.godot/imported/spr-mascara-quebrando30.png-5679ab7185372a65834ebdfa1f1663b8.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7wker"]
+load_path = "res://.godot/imported/spr-mascara-quebrando40.png-9886c05b3fbff89a5d8c6a470c61535b.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5hl2u"]
+load_path = "res://.godot/imported/spr-mascara-quebrando50.png-dcc97acc6c33de624f9a02a3ea4a3177.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yb26y"]
+load_path = "res://.godot/imported/spr-mascara-quebrando60.png-444f5137fe2c7624817d8a20dadf002e.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l8lo3"]
+load_path = "res://.godot/imported/spr-mascara-quebrando70.png-5a93343b515478593c4f5499c9ead9e0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q0c0e"]
+load_path = "res://.godot/imported/spr-mascara-quebrando80.png-bf75d7169ce54cfd54625a19f0e189ed.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kwc50"]
+load_path = "res://.godot/imported/spr-mascara-quebrando90.png-c7e7318c4fbf1f46f556c622b8bffe6b.ctex"
 
 [node name="Player" type="CharacterBody2D" unique_id=1183110560]
 collision_layer = 2
@@ -68,28 +92,10 @@ hurtbox_component = NodePath("../HurtboxComponent")
 animated_sprite = NodePath("../AnimatedSprite2D")
 animate = false
 
-[node name="Hud" type="CanvasLayer" parent="." unique_id=1359018619]
+[node name="Hud" parent="." unique_id=1615795096 node_paths=PackedStringArray("healthComponent") instance=ExtResource("7_210l5")]
+health_textures = Array[Texture2D]([SubResource("CompressedTexture2D_210l5"), SubResource("CompressedTexture2D_jko58"), SubResource("CompressedTexture2D_42idl"), SubResource("CompressedTexture2D_7wker"), SubResource("CompressedTexture2D_5hl2u"), SubResource("CompressedTexture2D_yb26y"), SubResource("CompressedTexture2D_l8lo3"), SubResource("CompressedTexture2D_q0c0e"), SubResource("CompressedTexture2D_kwc50"), ExtResource("17_mpvsy")])
+healthComponent = NodePath("../HealthComponent")
 
-[node name="MaskBar" type="TextureProgressBar" parent="Hud" unique_id=1759023371]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -207.0
-offset_top = -605.0
-offset_right = 207.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.25, 0.25)
-pivot_offset_ratio = Vector2(0.5, 0.95)
-texture_over = ExtResource("7_jko58")
-texture_progress = ExtResource("8_42idl")
-script = ExtResource("9_7wker")
-texture_high = ExtResource("7_jko58")
-texture_mid = ExtResource("10_7wker")
-texture_low = ExtResource("11_5hl2u")
-
-[connection signal="player_health_changed" from="." to="Hud/MaskBar" method="_on_player_player_health_changed"]
+[connection signal="player_health_changed" from="." to="Hud" method="_on_player_player_health_changed"]
 [connection signal="died" from="HealthComponent" to="." method="_on_death"]
 [connection signal="health_changed" from="HealthComponent" to="." method="_on_health_changed"]

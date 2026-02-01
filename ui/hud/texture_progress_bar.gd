@@ -6,9 +6,26 @@ extends TextureProgressBar
 var healthUI: int
 var maxHealthUI: int
 
+@export var healthComponent: HealthComponent
+@export var amplitude: float = 2.0
+@export var speed: float = 4.0
+
+var time: float = 0.0
+var initial_x: float = 0.0
+
+func _process(delta):
+	if (texture_over == texture_low):
+		time += delta
+		# A mágica do Seno: cria um valor que oscila entre -1 e 1 suavemente
+		var movement = sin(time * speed) * amplitude
+		position.x = initial_x + movement
+	else :
+		position.x = initial_x
+
 func _ready():
-	healthUI = $"../../HealthComponent".health
-	maxHealthUI = $"../../HealthComponent".max_health
+	initial_x = position.x
+	healthUI = healthComponent.health
+	maxHealthUI = healthComponent.max_health
 	update_texture_style()
 
 func _on_player_player_health_changed(new_health: int, old_health: int, max_health: int) -> void:

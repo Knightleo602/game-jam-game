@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctx2snu51fjdh"
-path="res://.godot/imported/spr-mascara-linhas.png-77490ba8a216c9f406eaa55083fc8847.ctex"
+uid="uid://b138bp7lkbeds"
+path="res://.godot/imported/wind.png-fd5a307c974fa8cf933c3eb22f62ebe0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hud/spr-mascara-linhas.png"
-dest_files=["res://.godot/imported/spr-mascara-linhas.png-77490ba8a216c9f406eaa55083fc8847.ctex"]
+source_file="res://assets/character/upgrades/wind.png"
+dest_files=["res://.godot/imported/wind.png-fd5a307c974fa8cf933c3eb22f62ebe0.ctex"]
 
 [params]
 
