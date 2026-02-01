@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://uia62ajy5yfr" path="res://assets/menu/spr-menu-sair.png" id="8_q8428"]
 [ext_resource type="Texture2D" uid="uid://cusgllgtk8wya" path="res://assets/menu/spr-menu-sair-branco.png" id="9_pgjxa"]
 [ext_resource type="PackedScene" uid="uid://cv5df3wnyj0io" path="res://ui/fade_transicions.tscn" id="10_6d44m"]
+[ext_resource type="AudioStream" uid="uid://d0yxp0vw1hiho" path="res://assets/sound/TELA GAME OVER.wav" id="10_nn02g"]
 
 [node name="GameOverMenu" type="Node2D" unique_id=546047650]
 process_mode = 3
@@ -121,10 +122,14 @@ texture_hover = ExtResource("9_pgjxa")
 visible = false
 
 [node name="FadeTimer" type="Timer" parent="FadeTransicions" unique_id=541123251]
-wait_time = 0.14100000000000001
+wait_time = 0.141
 
 [node name="Timer" type="Timer" parent="." unique_id=493595124]
 wait_time = 0.177
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1957284271]
+stream = ExtResource("10_nn02g")
+volume_db = -15.0
 
 [connection signal="button_down" from="CanvasLayer/Menu/MarginContainer2/ButtonManager/StartButton" to="." method="_on_start_button_button_down"]
 [connection signal="button_down" from="CanvasLayer/Menu/MarginContainer2/ButtonManager/Quit" to="." method="_on_quit_button_down"]

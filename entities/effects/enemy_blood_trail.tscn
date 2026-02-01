@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://2lgejn8g5mo5"]
+
+[ext_resource type="Script" uid="uid://dvlhxxn201ftn" path="res://entities/effects/enemy_blood_trail.gd" id="1_21wok"]
+[ext_resource type="Script" uid="uid://b5lae4l2avte2" path="res://entities/effects/trail.gd" id="1_qwxiy"]
+[ext_resource type="Script" uid="uid://dk2626lfapnm1" path="res://entities/components/velocity_component.gd" id="2_846sm"]
+
+[sub_resource type="Curve" id="Curve_qwxiy"]
+_data = [Vector2(0, 0.27479345), 0.0, 0.0, 0, 0, Vector2(0.19256018, 1), 0.0, 0.0, 0, 0, Vector2(0.3632385, 0.36611575), 0.0, 0.0, 0, 0, Vector2(0.48140046, 1), 0.0, 0.0, 0, 0, Vector2(0.6608315, 0.35537195), -0.6294766, -0.6294766, 0, 0, Vector2(0.8599562, 0.75826454), 0.0, 0.0, 0, 0, Vector2(1, 0.2210744), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="Gradient" id="Gradient_846sm"]
+offsets = PackedFloat32Array(0, 0.11455847, 0.5584726, 0.85202867, 1)
+colors = PackedColorArray(0.40390262, 2.8216652e-06, 1.6123802e-06, 1, 1, 0, 0.007843138, 1, 0.57898307, 2.918964e-07, 0.0007147591, 1, 1, 0, 0.007843138, 1, 0.83611983, 0, 0.0049622236, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_21wok"]
+radius = 4.0
+
+[node name="EnemyBloodTrail" type="Node2D" unique_id=1898205819]
+script = ExtResource("1_21wok")
+
+[node name="VelocityComponent" type="Node" parent="." unique_id=2064872768]
+script = ExtResource("2_846sm")
+acceleration = 1.0
+metadata/_custom_type_script = "uid://dk2626lfapnm1"
+
+[node name="EnemyBloodTrail" type="Line2D" parent="." unique_id=1849208942]
+z_index = -2
+width = 6.52
+width_curve = SubResource("Curve_qwxiy")
+gradient = SubResource("Gradient_846sm")
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("1_qwxiy")
+max_points = 200
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1299212919]
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2107892777]
+shape = SubResource("CircleShape2D_21wok")
+
+[connection signal="tree_exited" from="EnemyBloodTrail" to="." method="_on_enemy_blood_trail_tree_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

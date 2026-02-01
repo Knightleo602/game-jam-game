@@ -8,12 +8,19 @@
 [ext_resource type="PackedScene" uid="uid://ccpbqu2hqer7g" path="res://entities/components/velocity_component.tscn" id="6_3rkkq"]
 [ext_resource type="PackedScene" uid="uid://clq4jg4gw8d8y" path="res://ui/game_over_menu.tscn" id="6_jau11"]
 [ext_resource type="PackedScene" uid="uid://bva0ek84oqlme" path="res://ui/pause_menu.tscn" id="8_6dvhh"]
+[ext_resource type="AudioStream" uid="uid://cylaud04fs3cd" path="res://assets/sound/GAME.wav" id="9_ki7y6"]
+[ext_resource type="AudioStream" uid="uid://bqc0hbec3fg2e" path="res://assets/sound/GAME v2.wav" id="10_rakgg"]
 
 [sub_resource type="Curve2D" id="Curve2D_7rt5u"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1907, -425, 0, 0, 0, 0, 1919, 1063, 0, 0, 0, 0, -658, 1066, 0, 0, 0, 0, -658, -425, 0, 0, 0, 0, 1907, -425)
 }
 point_count = 5
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_isvre"]
+streams_count = 2
+stream_0/stream = ExtResource("9_ki7y6")
+stream_1/stream = ExtResource("10_rakgg")
 
 [node name="MainScene" type="Node2D" unique_id=2138036064]
 script = ExtResource("1_1n5d8")
@@ -74,6 +81,11 @@ position = Vector2(300, -45)
 
 [node name="Timer" type="Timer" parent="." unique_id=1825071916]
 one_shot = true
+
+[node name="GameMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1288277617]
+stream = SubResource("AudioStreamRandomizer_isvre")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
 [connection signal="player_died" from="ObjectLayer/Player" to="GameOverMenu" method="_on_player_player_died"]

@@ -68,4 +68,4 @@ func disable() -> void:
 	attack_timer.stop()
 	
 func decrease_atk_timer(percent: float):
-	attack_timer.wait_time = 0.9
+	attack_timer.wait_time = attack_timer.wait_time * 0.9

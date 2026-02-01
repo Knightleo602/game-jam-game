@@ -1,13 +1,12 @@
 class_name Trail extends Line2D
 
-const MAX_POINTS: int = 20
-
 @onready var curve: Curve2D = Curve2D.new()
+
+@export var max_points: int = 20
 
 var stopped = false
 var should_free = false
 
-var position_offset: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	curve.clear_points()
@@ -15,6 +14,10 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	add_points()
+
+
+func add_points():
 	if stopped:
 		if curve.get_point_count() == 0:
 			if should_free:
@@ -22,12 +25,13 @@ func _process(_delta: float) -> void:
 		else:
 			curve.remove_point(0)
 	else:
-		curve.add_point(get_parent().global_position + position_offset)
-		
+		var pos = get_parent().global_position
+		curve.add_point(pos)
 
-		if curve.get_point_count() > MAX_POINTS:
+		if curve.get_point_count() > max_points:
 			curve.remove_point(0)
 	points = curve.get_baked_points()
+
 
 func stop() -> void:
 	stopped = true
