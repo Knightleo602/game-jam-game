@@ -8,3 +8,6 @@ signal hit_registered(target: HurtboxComponent)
 
 func register_hit(target: HurtboxComponent):
 	hit_registered.emit(target)
+
+func set_activated(activated: bool) -> void:
+	monitoring = activated

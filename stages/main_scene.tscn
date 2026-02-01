@@ -1,21 +1,20 @@
-[gd_scene format=4 uid="uid://crilrrgqbclja"]
+[gd_scene format=3 uid="uid://crilrrgqbclja"]
 
 [ext_resource type="Script" uid="uid://bflev4pkv4x8b" path="res://stages/main_scene.gd" id="1_1n5d8"]
 [ext_resource type="PackedScene" uid="uid://bciv4ehi025yo" path="res://entities/character/player/player.tscn" id="1_3r8lt"]
-[ext_resource type="Texture2D" uid="uid://ctx2snu51fjdh" path="res://assets/hud/spr-mascara-linhas.png" id="3_7rt5u"]
 [ext_resource type="PackedScene" uid="uid://cv5df3wnyj0io" path="res://ui/fade_transicions.tscn" id="3_uui7f"]
+[ext_resource type="PackedScene" uid="uid://jjnxkj32kjb" path="res://common/camera.tscn" id="5_3rkkq"]
 [ext_resource type="PackedScene" uid="uid://cdsork0fui4y6" path="res://entities/character/enemies/enemy.tscn" id="5_7rt5u"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3rkkq"]
-texture = ExtResource("3_7rt5u")
-6:17/0 = 0
-9:17/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_jau11"]
-sources/0 = SubResource("TileSetAtlasSource_3rkkq")
+[sub_resource type="Curve2D" id="Curve2D_7rt5u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1907, -425, 0, 0, 0, 0, 1919, 1063, 0, 0, 0, 0, -658, 1066, 0, 0, 0, 0, -658, -425, 0, 0, 0, 0, 1907, -425)
+}
+point_count = 5
 
 [node name="MainScene" type="Node2D" unique_id=2138036064]
 script = ExtResource("1_1n5d8")
+enemies = Array[PackedScene]([ExtResource("5_7rt5u")])
 
 [node name="FadeTransicions" parent="." unique_id=239104663 instance=ExtResource("3_uui7f")]
 offset_left = 81.0
@@ -23,15 +22,35 @@ offset_top = 7.0
 offset_right = 2001.0
 offset_bottom = 1087.0
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=438112370]
-tile_map_data = PackedByteArray("AAAkABYAAAAJABEAAAAjABYAAAAJABEAAAAjABUAAAAJABEAAAAiABUAAAAJABEAAAAhABUAAAAJABEAAAAgABUAAAAJABEAAAAgABQAAAAJABEAAAAgABMAAAAJABEAAAAhABMAAAAJABEAAAAiABIAAAAJABEAAAAjABIAAAAJABEAAAAkABIAAAAJABEAAAAlABIAAAAJABEAAAAlABMAAAAJABEAAAAlABQAAAAJABEAAAAlABUAAAAJABEAAAAkABUAAAAJABEAAAAiABYAAAAJABEAAAAhABYAAAAJABEAAAAgABYAAAAJABEAAAAfABQAAAAJABEAAAAfABMAAAAJABEAAAAfABIAAAAJABEAAAAgABEAAAAJABEAAAAhABAAAAAJABEAAAAiABAAAAAJABEAAAAjABEAAAAJABEAAAAkABEAAAAJABEAAAAkABQAAAAJABEAAAAiABQAAAAJABEAAAAhABQAAAAJABEAAAAhABIAAAAJABEAAAAiABEAAAAJABEAAAAkABMAAAAJABEAAAAjABQAAAAJABEAAAA=")
-tile_set = SubResource("TileSet_jau11")
-
 [node name="Player" parent="." unique_id=1183110560 instance=ExtResource("1_3r8lt")]
 position = Vector2(626, 314)
 
-[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1582320420]
-zoom = Vector2(0.47, 0.47)
+[node name="Camera" parent="Player" unique_id=669381075 instance=ExtResource("5_3rkkq")]
+process_callback = 0
+limit_enabled = false
+position_smoothing_enabled = true
+position_smoothing_speed = 2.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.07
+drag_top_margin = 0.07
+drag_right_margin = 0.07
+drag_bottom_margin = 0.07
 
-[node name="Enemy" parent="." unique_id=961511005 instance=ExtResource("5_7rt5u")]
-position = Vector2(713, 310)
+[node name="EnemySpawnPath" type="Path2D" parent="Player/Camera" unique_id=1794835293]
+position = Vector2(-756.6317, -428.03888)
+scale = Vector2(1.1540551, 1.3246144)
+curve = SubResource("Curve2D_7rt5u")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Camera/EnemySpawnPath" unique_id=1160707530]
+position = Vector2(1907, -425)
+rotation = 1.562732
+rotates = false
+
+[node name="Position2D" type="Marker2D" parent="Player/Camera/EnemySpawnPath/PathFollow2D" unique_id=1561179251]
+
+[node name="EnemySpawnTimer" type="Timer" parent="." unique_id=815990503]
+autostart = true
+
+[connection signal="player_health_changed" from="Player" to="." method="_on_player_player_health_changed"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
