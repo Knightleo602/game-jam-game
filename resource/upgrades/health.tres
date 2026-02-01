@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="UpgradeData" format=3 uid="uid://ckjl1jams4hd0"]
+
+[ext_resource type="Texture2D" uid="uid://bbifda4jireoa" path="res://assets/character/upgrades/bandAid.png" id="1_qur55"]
+[ext_resource type="Script" uid="uid://dxw8o01m7ksjq" path="res://ui/scripts/UpgradeData.gd" id="2_a1md2"]
+
+[resource]
+script = ExtResource("2_a1md2")
+icon = ExtResource("1_qur55")
+title = "Garra"
+description = "+ 10 de Vida Maxima"
+attribute_name = "maxHealth"
+metadata/_custom_type_script = "uid://dxw8o01m7ksjq"

@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bj2u440yd4eo2"]
+
+[ext_resource type="Texture2D" uid="uid://cou81rkhhhemv" path="res://assets/character/upgrades/garra.png" id="1_141gf"]
+[ext_resource type="Script" uid="uid://c0hxdurifmi4n" path="res://ui/scripts/upgrade.gd" id="1_pgj5t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5p7a"]
+content_margin_bottom = 8.0
+bg_color = Color(0.074705996, 0.009374297, 0.012805768, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.37076458, 0.08483885, 0.091192745, 1)
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgj5t"]
+bg_color = Color(0.8269266, 0.80923027, 0.8035687, 1)
+
+[node name="Upgrade" type="Button" unique_id=1252052179]
+offset_top = 10.0
+offset_right = 233.0
+offset_bottom = 323.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+script = ExtResource("1_pgj5t")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=854271443]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.5
+offset_top = -156.5
+offset_right = 116.5
+offset_bottom = 156.5
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_a5p7a")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1135014307]
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer" unique_id=1261689852]
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_pgj5t")
+
+[node name="CardTexture" type="TextureRect" parent="PanelContainer/VBoxContainer/PanelContainer2" unique_id=2142767889]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_141gf")
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1591983520]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 32
+text = "Garra"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="PanelContainer/VBoxContainer" unique_id=872414700]
+layout_mode = 2
+mouse_filter = 1
+text = "+ 1 de Dano de Ataque"
+horizontal_alignment = 1

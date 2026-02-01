@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl7ebjbanrxts"
-path="res://.godot/imported/spr-mascara-preenchimento.png-e2256c5a4cf79b2b7fff93135b7ae37c.ctex"
+uid="uid://b7yw6ksxcgr35"
+path="res://.godot/imported/spr-mascara-quebrando50.png-dcc97acc6c33de624f9a02a3ea4a3177.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hud/spr-mascara-preenchimento.png"
-dest_files=["res://.godot/imported/spr-mascara-preenchimento.png-e2256c5a4cf79b2b7fff93135b7ae37c.ctex"]
+source_file="res://assets/hud/mask/spr-mascara-quebrando50.png"
+dest_files=["res://.godot/imported/spr-mascara-quebrando50.png-dcc97acc6c33de624f9a02a3ea4a3177.ctex"]
 
 [params]
 

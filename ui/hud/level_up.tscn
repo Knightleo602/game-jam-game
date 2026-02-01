@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://d3u4ohf138uko"]
+
+[ext_resource type="PackedScene" uid="uid://bj2u440yd4eo2" path="res://ui/hud/upgrade.tscn" id="1_2ut5m"]
+[ext_resource type="Script" uid="uid://bfmov0615xoh7" path="res://ui/scripts/level_up.gd" id="1_lqa4g"]
+[ext_resource type="Script" uid="uid://dxw8o01m7ksjq" path="res://ui/scripts/UpgradeData.gd" id="2_tnec1"]
+[ext_resource type="Resource" uid="uid://ckjl1jams4hd0" path="res://resource/upgrades/health.tres" id="3_3lcpv"]
+[ext_resource type="PackedScene" uid="uid://c3bg1b1evi10w" path="res://ui/hud/mask.tscn" id="3_bxtg7"]
+[ext_resource type="Resource" uid="uid://x7fca8ninf8v" path="res://resource/upgrades/powerAtk.tres" id="4_rjlov"]
+[ext_resource type="Resource" uid="uid://d30ok7b8pmv6t" path="res://resource/upgrades/speedAtk.tres" id="5_22rns"]
+
+[node name="LevelUp" type="Control" unique_id=646394916]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lqa4g")
+available_upgrades = Array[ExtResource("2_tnec1")]([ExtResource("3_3lcpv"), ExtResource("4_rjlov"), ExtResource("5_22rns")])
+
+[node name="Upgrade1" parent="." unique_id=1252052179 instance=ExtResource("1_2ut5m")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 129.0
+offset_top = -87.25
+offset_right = 253.5
+offset_bottom = 87.25
+grow_vertical = 2
+size_flags_stretch_ratio = 4.0
+
+[node name="Mask" parent="." unique_id=1145888277 instance=ExtResource("3_bxtg7")]
+layout_mode = 1
+size_flags_horizontal = 6
+size_flags_vertical = 4
+stretch_mode = 5
+
+[node name="Upgrade2" parent="." unique_id=1080767603 instance=ExtResource("1_2ut5m")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -87.25
+offset_right = -125.5
+offset_bottom = 87.25
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_stretch_ratio = 4.0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv1mi5f07x8wu"
-path="res://.godot/imported/spr-mascara-linhas-2.png-dccbd13437773838fbd738bbc69d9073.ctex"
+uid="uid://diew07r2qug78"
+path="res://.godot/imported/spr-mascara-quebrando20.png-190d66a3f028575d7d814ed7bc2bb114.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/hud/spr-mascara-linhas-2.png"
-dest_files=["res://.godot/imported/spr-mascara-linhas-2.png-dccbd13437773838fbd738bbc69d9073.ctex"]
+source_file="res://assets/hud/mask/spr-mascara-quebrando20.png"
+dest_files=["res://.godot/imported/spr-mascara-quebrando20.png-190d66a3f028575d7d814ed7bc2bb114.ctex"]
 
 [params]
 
